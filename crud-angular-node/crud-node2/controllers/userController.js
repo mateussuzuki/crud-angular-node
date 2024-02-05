@@ -57,5 +57,20 @@ router.patch('/:id', async (req, res) => {
   }
 });
 
+router.delete('/', async (req, res) => {
+  const userId = req.params
+
+  try {
+    await userService.deleteData(userId);
+
+    if(user) {
+      res.json('usuario deletado com sucesso')
+    }
+
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 
 module.exports = router;

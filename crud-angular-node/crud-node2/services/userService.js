@@ -54,9 +54,21 @@ async function changeData(userId, data) {
 
 }
 
+async function deleteData(userId) {
+
+  await dbData.query(
+    `DELETE FROM users 
+    WHERE id = ${userId}`
+  )
+
+
+
+}
+
 module.exports = {
   getAllUsers,
   getUserById,
   register,
-  changeData
+  changeData,
+  deleteData
 };
