@@ -1,20 +1,25 @@
 const express = require('express');
-const user = require('./userController');
+const bodyParser = require('body-parser');
+const userRoutes = require('./controllers/userController');
+const cors = require('cors')
 
+const app = express();
+const port = 3000;
 
-const app = express()
+app.use(bodyParser.json());
 
-app.use(express.json());
-const port = 3003
+app.use('/users', userRoutes);
 
-app.listen(3003, () => (console.log(`funcionando porta ${port}`)))
+app.use(cors())
 
-app.get('/', async (req, res) => {
-  const query = await user.getAllUsers();
-  return res.status(200).json(query)
-})
+app.use((req, res, next) => {
 
-app.get('/:id', async (req, res) => {
-  const query = await user.getUser(req.params.id);
-  return res.status(200).json(query)
-})
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+    app.use(cors());
+    next();
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
