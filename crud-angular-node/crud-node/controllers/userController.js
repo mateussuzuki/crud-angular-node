@@ -12,6 +12,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/verify', async (req, res) => {
+
   const login = req.query.login;
   const password = req.query.password
   console.log(login, password);

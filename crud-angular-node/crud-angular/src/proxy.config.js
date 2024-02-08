@@ -2,6 +2,7 @@ const PROXY_CONFIG = [
   {
     context: [
       "/users",
+      "/verify"
       // path
     ],
     target: "http://localhost:3000/",

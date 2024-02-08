@@ -72,7 +72,8 @@
               "browserTarget": "crud-angular:build:production"
             },
             "development": {
-              "browserTarget": "crud-angular:build:development"
+              "browserTarget": "crud-angular:build:development",
+              "proxyConfig": "src/proxy.config.js"
             }
           },
           "defaultConfiguration": "development"

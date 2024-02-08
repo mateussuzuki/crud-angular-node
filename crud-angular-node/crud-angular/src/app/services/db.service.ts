@@ -6,7 +6,7 @@ import { HttpClient, HttpParams } from "@angular/common/http"
 })
 
 export class DbService {
-  private dbUrl = "http://localhost:3000/users"
+  private dbUrl = "/users"
 
   constructor(private http: HttpClient){}
 
