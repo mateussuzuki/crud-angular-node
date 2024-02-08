@@ -3,22 +3,65 @@
     <div class="row align-items-center container-form">
 
       <div class="col-4 offset-4">
-
-        <form>
+        <!-- <form>
           <div class="row">
             <h1>Login</h1>
             <div class="form-group col-12 mt-4">
-              <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+              <input type="email"
+              name="login"
+              [(ngModel)]="loginInput"
+              class="form-control" 
+              id="inputEmail" 
+              aria-describedby="emailHelp" 
+              placeholder="Enter email">
             </div>
             <div class="form-group col-12 mt-4">
-              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              <input type="password" 
+              name="pass"
+              [(ngModel)]="passwordInput"
+              class="form-control" 
+              id="inputPassword" 
+              placeholder="Password">
             </div>
             <div class="col-6 offset-7 mt-2">
               <a href="#">forgot password?</a>
             </div>
             <div>
-              <button type="submit" class="btn btn-primary col-4 offset-4 mt-5">Submit</button>
+              <button (click)="onSubmit()" 
+              class="btn btn-primary col-4 offset-4 mt-5">Submit</button>
             </div>
+            <div class="col-8 offset-2 mt-3">
+              <p> Not a member? <a href="#">Signup now</a> </p>
+            </div>
+          </div>
+        </form> -->
+
+        <form (ngSubmit)="login()" #loginForm="ngForm">
+          <div class="row">
+            <h1>Login</h1>
+            <div class="form-group col-12 mt-4">
+              <input type="text"
+              id="login"
+              name="login"
+              class="form-control"
+              [(ngModel)]="formData.login"
+              placeholder="Email Adress"
+              required>
+            </div>
+            <div class="form-group col-12 mt-4">
+              <input type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              [(ngModel)]="formData.password"
+              placeholder="Password"
+              required>
+            </div>
+            <div class="col-6 offset-7 mt-2">
+              <a href="#">forgot password?</a>
+            </div>
+            <button type="submit" 
+            class="btn btn-primary col-4 offset-4 mt-5">Login</button>
             <div class="col-8 offset-2 mt-3">
               <p> Not a member? <a href="#">Signup now</a> </p>
             </div>

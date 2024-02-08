@@ -11,8 +11,11 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
-  const userId = req.params.id;
+router.get('/verify', async (req, res) => {
+  const login = req.query.login;
+  const password = req.query.password
+  console.log(login, password);
+  return res.status(200).json({ login: `${login}` });
 
   try {
     const user = await userService.getUserById(userId);
