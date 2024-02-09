@@ -12,11 +12,23 @@ async function getUserById(userId) {
   return rows[0];
 }
 
-async function register(newData) {
+async function register(data) {
   try {
-    const insertQuery = `INSERT INTO users (login, pass) VALUES ('${newData.login}','${newData.pass}')`
-    console.log('insertQuery: ', insertQuery);
+
+    const [user] = await dbData.query(
+      `SELECT * FROM users 
+      WHERE login = ?`, [data.login])
+
+    if (user.length > 0) {
+      return false
+    }
+
+    const insertQuery = 
+    `INSERT INTO users (login, pass) 
+    VALUES ('${data.login}','${data.password}')`
+
     const [rows] = await dbData.query(insertQuery)
+
     return true
   } catch (error) {
     throw Error(error);

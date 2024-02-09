@@ -3,6 +3,7 @@ const router = express.Router();
 const userService = require('../services/userService');
 
 router.get('/', async (req, res) => {
+  
   try {
     const users = await userService.getAllUsers();
     res.json(users);
@@ -11,12 +12,11 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/verify', async (req, res) => {
+router.get('/', async (req, res) => {
 
-  const login = req.query.login;
-  const password = req.query.password
-  console.log(login, password);
-  return res.status(200).json({ login: `${login}` });
+  // const login = req.query.login;
+  // const password = req.query.password
+
 
   try {
     const user = await userService.getUserById(userId);
@@ -32,12 +32,17 @@ router.get('/verify', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
+
+  data = req.body
+  console.log(req.body);
+
   try {
-    const user = await userService.register(req.body)
+    const user = await userService.register(data)
 
     if (user) {
       return res.json('usuario criado com sucesso')
     }
+    
     return res.json('falha ao criar o usuario')
 
   } catch (error) {

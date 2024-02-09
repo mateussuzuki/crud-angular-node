@@ -7,18 +7,20 @@ import { DbService } from 'src/app/services/db.service';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent  {
+
   formData = {
     login: "",
     password: "",
   }
 
-
   constructor(private dbService: DbService) {}
 
   verifyAccountDB(data:any) {
-    this.dbService.verifyAccount(data).subscribe((response:any) => {
+    this.dbService.createAccount(data)
+    .subscribe((response:any) => {
       console.log(response);
-    }) 
+      
+    })
   }
 
   login() {

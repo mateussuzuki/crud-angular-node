@@ -6,18 +6,30 @@ import { HttpClient, HttpParams } from "@angular/common/http"
 })
 
 export class DbService {
-  private dbUrl = "/users"
+  private dbUrl = "users"
 
   constructor(private http: HttpClient){}
 
-
-  verifyAccount(data:any) {
-
+  
+  createAccount(data:any) {
+    
     const params = new HttpParams()
     .set('login', data.login)
-    .set('password', data.password)
-
-    return this.http.get(`${this.dbUrl}/verify`, { params })
-    // return this.http.post(`${this.dbUrl}/verify`, data)
+    .set('password', data.password)    
+    // return this.http.get(`${this.dbUrl}`, { params })
+    // console.log(data);
+    console.log(data);
+    
+    return this.http.post(`${this.dbUrl}`, data)
   }
+
+  // createAccount(data:any) {
+  //   const params = new HttpParams()
+  //   .set('login', data.login)
+  //   .set('password', data.password)
+
+  //   return this.http.get(`${this.dbUrl}`, { params })
+  // }
+
+
 }
