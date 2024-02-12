@@ -40,10 +40,10 @@ router.post('/', async (req, res) => {
     const user = await userService.register(data)
 
     if (user) {
-      return res.json('usuario criado com sucesso')
+      return res.json(true)
     }
     
-    return res.json('falha ao criar o usuario')
+    return res.json(false)
 
   } catch (error) {
     res.status(500).json({ error: error.message });

@@ -12,3 +12,14 @@ form {
 input {
   background-color: var(--gray);
 }
+
+svg {
+  width: 25px;
+}
+
+.alert {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

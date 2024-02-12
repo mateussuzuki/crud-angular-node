@@ -13,15 +13,26 @@ export class LoginPageComponent  {
     password: "",
   }
 
+  sucessfull:boolean = false
+  fail:boolean = false
+
   constructor(private dbService: DbService) {}
 
   verifyAccountDB(data:any) {
     this.dbService.createAccount(data)
     .subscribe((response:any) => {
-      console.log(response);
+      if(response) {
+        this.sucessfull = true
+        this.fail = false
+      } else {
+        this.fail = true
+        this.sucessfull = false
+      }
       
     })
   }
+
+
 
   login() {
     console.log(this.formData.login);

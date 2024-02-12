@@ -13,23 +13,14 @@ export class DbService {
   
   createAccount(data:any) {
     
-    const params = new HttpParams()
-    .set('login', data.login)
-    .set('password', data.password)    
+    // const params = new HttpParams()
+    // .set('login', data.login)
+    // .set('password', data.password)    
     // return this.http.get(`${this.dbUrl}`, { params })
+    //  console.log(data);
     // console.log(data);
-    console.log(data);
     
     return this.http.post(`${this.dbUrl}`, data)
   }
-
-  // createAccount(data:any) {
-  //   const params = new HttpParams()
-  //   .set('login', data.login)
-  //   .set('password', data.password)
-
-  //   return this.http.get(`${this.dbUrl}`, { params })
-  // }
-
 
 }
