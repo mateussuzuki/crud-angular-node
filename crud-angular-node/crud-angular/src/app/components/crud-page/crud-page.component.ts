@@ -12,10 +12,16 @@ export class CrudPageComponent {
 
   users: User[] = []
 
+  toggle:boolean = true
+
   constructor() {}
 
   ngOnInit(): void {
   this.users = userData;
 }
+
+  toggleModal() {
+    this.toggle = !this.toggle
+  }
 
 }

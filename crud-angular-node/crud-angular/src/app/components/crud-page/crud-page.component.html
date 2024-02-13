@@ -1,8 +1,6 @@
 <div class="container">
   <h2>Users</h2>
-
   <hr>
-
   <table class="table">
     <thead>
       <tr>
@@ -10,10 +8,7 @@
         <th>Name</th>
         <th>Email</th>
         <th>
-          <button 
-            class="btn btn-primary mx-1" 
-            title="Add New User"
-            >
+          <button class="btn btn-primary mx-1" title="Add New User">
             <i class="bi bi-plus"></i>
           </button>
         </th>
@@ -27,19 +22,13 @@
         <td>{{ user.name }}</td>
         <td>{{ user.email }}</td>
 
-        <td>  
+        <td>
           <div>
-            <button 
-              class="btn btn-primary mx-1" 
-              title="Edit User"
-              >
+            <button class="btn btn-primary mx-1" title="Edit User">
               <i class="bi bi-pencil"></i>
             </button>
 
-            <button 
-              class="btn btn-danger mx-1" 
-              title="Delete User"
-              >
+            <button class="btn btn-danger mx-1" title="Delete User">
               <i class="bi bi-trash"></i>
             </button>
           </div>
@@ -47,4 +36,9 @@
       </tr>
     </tbody>
   </table>
+</div>
+
+<div *ngIf="toggle">
+  <app-modal (toggle)="toggleModal()"/>
+  <div class="backModal" (click)=toggleModal()></div>
 </div>
