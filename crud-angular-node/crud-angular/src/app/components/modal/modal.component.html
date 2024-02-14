@@ -1,20 +1,25 @@
-<div class="containerModal row">
-  <div class="col-10 mb-4">
-    <h1>Add New User</h1>
+<form (ngSubmit)="add()" >
+  <div class="containerModal row">
+    <div class="col-10 mb-4">
+      <h1>Add New User</h1>
+    </div>
+    <div class="col-1">
+      <img width="50" height="50" src="https://img.icons8.com/ios/50/multiply.png"
+        (click)="toggleModal()" />
+    </div>
+    <label for="name" class="form-label">Name</label>
+    <div class="input-group mb-3">
+      <input type="text"
+      id="name"
+      name="name"
+      class="form-control"
+      [(ngModel)]="dataCar.name"
+      placeholder="name"
+      required>
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-end">
+      <button *ngIf="action == 'edit'" type="submit" class="btn btn-secondary">update User</button>
+      <button *ngIf="action == 'add'" type="submit" class="btn btn-primary">Add User</button>
+    </div>
   </div>
-  <div class="col-1">
-    <img width="50" height="50" src="https://img.icons8.com/ios/50/multiply.png"
-      (click)="toggleModal()" />
-  </div>
-  <label for="name" class="form-label">Name</label>
-  <div class="input-group mb-3">
-    <input type="text" id="name" class="form-control" placeholder="name">
-  </div>
-  <label for="email">Email</label>
-  <div class="input-group mb-3">
-    <input type="text" id="email" class="form-control" placeholder="exemple@hotmail.com">
-  </div>
-  <div class="d-grid gap-2 d-md-flex justify-content-end">
-    <button class="btn btn-primary">Add User</button>
-  </div>
-</div>
+</form>

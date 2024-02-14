@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const userRoutes = require('./controllers/userController');
+const carsRoutes = require('./controllers/carController');
 const cors = require('cors')
 
 const app = express();
@@ -9,16 +10,16 @@ const port = 3000;
 app.use(bodyParser.json());
 
 app.use('/users', userRoutes);
-
-app.use(cors())
+app.use('/cars', carsRoutes);
 
 app.use((req, res, next) => {
-
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
-    app.use(cors());
-    next();
+  res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  app.use(cors());
+  next();
 });
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

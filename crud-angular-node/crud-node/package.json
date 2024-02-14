@@ -1,10 +1,10 @@
 {
-  "name": "crud-node2",
+  "name": "crud-node",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon crud-node2/index.js",
+    "dev": "nodemon crud-node/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

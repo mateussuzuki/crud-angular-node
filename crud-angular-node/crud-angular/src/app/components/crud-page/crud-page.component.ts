@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { User } from 'src/app/interfaces/users';
-import { userData } from 'src/app/interfaces/usersData';
+import { Car } from 'src/app/interfaces/cars';
+import { CarService } from 'src/app/services/cars.service';
 
 
 @Component({
@@ -10,18 +10,31 @@ import { userData } from 'src/app/interfaces/usersData';
 })
 export class CrudPageComponent {
 
-  users: User[] = []
+  cars: Car[] = []
 
-  toggle:boolean = true
+  toggle: boolean = false
+  action:string = "add"
 
-  constructor() {}
+  constructor(private carService:CarService) { }
 
   ngOnInit(): void {
-  this.users = userData;
-}
+    this.getCarsList()
+  }
+
+  getCarsList() {
+    this.carService.getAllCars()
+    .subscribe((response:any) => {
+      this.cars = response
+    })
+  }
 
   toggleModal() {
     this.toggle = !this.toggle
+  }
+
+  editCar() {
+    this.action = "edit"
+    this.toggleModal()
   }
 
 }

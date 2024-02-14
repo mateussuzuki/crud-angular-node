@@ -12,24 +12,24 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
+// router.get('/', async (req, res) => {
 
-  // const login = req.query.login;
-  // const password = req.query.password
+//   const login = req.query.login;
+//   const password = req.query.password
 
 
-  try {
-    const user = await userService.getUserById(userId);
+//   try {
+//     const user = await userService.getUserById(userId);
 
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
+//     if (!user) {
+//       return res.status(404).json({ error: 'User not found' });
+//     }
 
-    return res.json(user);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+//     return res.json(user);
+//   } catch (error) {
+//     res.status(500).json({ error: error.message });
+//   }
+// });
 
 router.post('/', async (req, res) => {
 
@@ -50,14 +50,16 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
-  const userId = req.params.id;
+router.put('/', async (req, res) => {
+  
+  data = req.body
+  console.log(req.body);
 
   try {
-    const user = await userService.changeData(userId, req.body);
+    const user = await userService.addUser(data);
 
     if(user) {
-      return res.json('usuario alterado com sucesso') 
+      return res.json('usuario adicionado') 
     }
 
     return res.json("error")      

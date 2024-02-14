@@ -6,7 +6,8 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginPageComponent },
-  { path: 'crud', component: CrudPageComponent }
+  { path: 'crud', component: CrudPageComponent },
+  
 ];
 
 @NgModule({

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DbService } from 'src/app/services/db.service'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -16,7 +17,7 @@ export class LoginPageComponent  {
   sucessfull:boolean = false
   fail:boolean = false
 
-  constructor(private dbService: DbService) {}
+  constructor(private dbService: DbService, private router: Router) {}
 
   verifyAccountDB(data:any) {
     this.dbService.createAccount(data)
@@ -24,6 +25,7 @@ export class LoginPageComponent  {
       if(response) {
         this.sucessfull = true
         this.fail = false
+        this.router.navigate(['crud'])
       } else {
         this.fail = true
         this.sucessfull = false

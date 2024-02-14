@@ -1,35 +1,31 @@
 <div class="container">
-  <h2>Users</h2>
+  <h2>Cars</h2>
   <hr>
   <table class="table">
     <thead>
       <tr>
         <th>id</th>
         <th>Name</th>
-        <th>Email</th>
         <th>
           <button class="btn btn-primary mx-1" title="Add New User">
-            <i class="bi bi-plus"></i>
+            <img src="assets/plus.svg" alt="">
           </button>
         </th>
       </tr>
     </thead>
 
     <tbody>
-      <tr *ngFor="let user of users; let i = index">
+      <tr *ngFor="let car of cars; let i = index">
         <td>{{ i + 1 }}</td>
-
-        <td>{{ user.name }}</td>
-        <td>{{ user.email }}</td>
-
+        <td>{{ car.name }}</td>
         <td>
           <div>
-            <button class="btn btn-primary mx-1" title="Edit User">
-              <i class="bi bi-pencil"></i>
+            <button class="btn btn-primary mx-1">
+              <img src="assets/pencil.svg" alt="">
             </button>
 
-            <button class="btn btn-danger mx-1" title="Delete User">
-              <i class="bi bi-trash"></i>
+            <button class="btn btn-danger mx-1">
+              <img src="assets/X.svg" alt="">
             </button>
           </div>
         </td>
@@ -39,6 +35,8 @@
 </div>
 
 <div *ngIf="toggle">
-  <app-modal (toggle)="toggleModal()"/>
+  <app-modal (toggle)="toggleModal()" 
+  (inputData)="getCarsList()"
+  [action]="action"/>
   <div class="backModal" (click)=toggleModal()></div>
 </div>

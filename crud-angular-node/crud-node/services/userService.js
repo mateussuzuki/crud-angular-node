@@ -1,7 +1,7 @@
 const dbData = require('../dbConfig')
 
 async function getAllUsers() {
-  const [rows] = await dbData.query('SELECT * FROM users');
+  const [rows] = await dbData.query('SELECT * FROM usersdata');
   return rows;
 }
 
@@ -35,6 +35,29 @@ async function register(data) {
   }
 }
 
+async function addUser(data) {
+  try {
+    const [user] = await dbData.query(
+      `SELECT * FROM usersdata 
+      WHERE username = ? OR email = ?`, [data.name, data.email])
+
+    if (user.length > 0) {
+      return false
+    }
+
+    const insertQuery = 
+    `INSERT INTO usersdata (username, email) 
+    VALUES (?, ?)`
+
+    const [rows] = await dbData.query(insertQuery, [data.name, data.email])
+
+    return true
+
+  } catch(error) {
+    throw Error(error)
+  }
+}
+
 async function changeData(userId, data) {
   try {
     const stringQuery = 
@@ -63,5 +86,6 @@ module.exports = {
   getUserById,
   register,
   changeData,
-  deleteData
+  deleteData,
+  addUser
 };
