@@ -15,10 +15,16 @@ export class CrudPageComponent {
   toggle: boolean = false
   action:string = "add"
 
+  deletedCar!:string
+
   constructor(private carService:CarService) { }
 
   ngOnInit(): void {
     this.getCarsList()
+  }
+
+  toggleModal() {
+    this.toggle = !this.toggle
   }
 
   getCarsList() {
@@ -28,12 +34,20 @@ export class CrudPageComponent {
     })
   }
 
-  toggleModal() {
-    this.toggle = !this.toggle
+
+  addCar() {
+    this.action = "add"
+    this.toggleModal()
   }
 
   editCar() {
     this.action = "edit"
+    this.toggleModal()
+  }
+
+  deleteCar(del:any) {
+    this.deletedCar = del    
+    this.action = "delete"
     this.toggleModal()
   }
 

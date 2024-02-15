@@ -12,25 +12,31 @@ export class ModalComponent {
     name: ""
   }
 
-  @Input() action!:string
-
-  constructor(private carService: CarService){}
   
-  addCar(data:any) {
-    this.carService.addCar(data)
-    .subscribe((response:any) => {
-      this.inputData.emit()
-    })
-  }
-
-  add() {
-    this.addCar(this.dataCar)
-  }
-
-
+  @Input() action!:string
+  @Input() deletedCar!:string
+  
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
   @Output() inputData: EventEmitter<void> = new EventEmitter<void>();
   
+
+  constructor(private carService: CarService){}
+  
+  addCar() {
+    this.carService.addCar(this.dataCar)
+    .subscribe((response:any) => {
+      this.inputData.emit()
+      this.toggleModal()
+    })
+  }
+
+  deleteCar() {
+    this.carService.deleteCar(this.deletedCar)
+    .subscribe((response:any) => {
+      this.inputData.emit()
+      this.toggleModal()
+    })
+  }
 
   toggleModal() {
     this.toggle.emit()
