@@ -17,6 +17,8 @@ export class CarService {
   }
 
   addCar(data:any):any {
+    console.log("chegou");
+    
     return this.http.post(`${this.dbUrl}`, data)
   }
 

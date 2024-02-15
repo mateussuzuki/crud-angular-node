@@ -31,6 +31,8 @@ export class CrudPageComponent {
     this.carService.getAllCars()
     .subscribe((response:any) => {
       this.cars = response
+      console.log(this.cars);
+      
     })
   }
 

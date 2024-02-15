@@ -5,7 +5,9 @@
   <div class="col-1">
     <img width="50" height="50" src="https://img.icons8.com/ios/50/multiply.png" (click)="toggleModal()" />
   </div>
-  <label for="name" class="form-label">Name</label>
+  <label for="name" class="form-label">
+    <h2>Name</h2>
+  </label>
   <div class="input-group mb-3" *ngIf="action != 'delete'">
     <input type="text" 
     id="name" 
@@ -13,6 +15,34 @@
     class="form-control" 
     [(ngModel)]="dataCar.name" 
     placeholder="name"
+    required>
+
+    
+  </div>
+
+  <label for="name" class="form-label">
+    <h2>Brand</h2>
+  </label>
+  <div class="input-group mb-3" *ngIf="action != 'delete'">
+    <input type="text" 
+    id="brand" 
+    name="brand" 
+    class="form-control" 
+    [(ngModel)]="dataCar.brand" 
+    placeholder="brand"
+    required>
+  </div>
+
+  <label for="name" class="form-label">
+    <h2>Color</h2>
+  </label>
+  <div class="input-group mb-3" *ngIf="action != 'delete'">
+    <input type="text" 
+    id="color" 
+    name="color" 
+    class="form-control" 
+    [(ngModel)]="dataCar.color" 
+    placeholder="color"
     required>
   </div>
 

@@ -10,12 +10,12 @@ router.get('/', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+  
 });
 
 router.post('/', async (req, res) => {
   
   try {
-    
     const car = await carService.addCar(req.body);
     res.json(car);
   } catch (error) {

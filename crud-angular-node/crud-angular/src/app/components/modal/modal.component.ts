@@ -9,7 +9,9 @@ import { CarService } from 'src/app/services/cars.service';
 export class ModalComponent {
 
   dataCar = {
-    name: ""
+    name: "",
+    brand: "",
+    color: ""
   }
 
   
