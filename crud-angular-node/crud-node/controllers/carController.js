@@ -10,8 +10,29 @@ router.get('/', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-  
 });
+
+router.get('/color', async (req, res) => {
+  
+  try {
+    const colors = await carService.getAllCarsColor();
+    res.json(colors);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.get('/brand', async (req, res) => {
+  
+  try {
+    const brand = await carService.getAllCarsBrand();
+    res.json(brand);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
 
 router.post('/', async (req, res) => {
   

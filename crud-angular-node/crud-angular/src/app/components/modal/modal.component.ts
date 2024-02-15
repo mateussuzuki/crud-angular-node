@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { CarService } from 'src/app/services/cars.service';
 
 @Component({
@@ -16,13 +17,14 @@ export class ModalComponent {
 
   
   @Input() action!:string
+
   @Input() deletedCar!:string
   
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
   @Output() inputData: EventEmitter<void> = new EventEmitter<void>();
   
 
-  constructor(private carService: CarService){}
+  constructor(private carService: CarService, private router: Router){}
   
   addCar() {
     this.carService.addCar(this.dataCar)
@@ -38,6 +40,14 @@ export class ModalComponent {
       this.inputData.emit()
       this.toggleModal()
     })
+  }
+
+  addColor() {
+    this.router.navigate(["/colors"])
+  }
+
+  addBrand() {
+    this.router.navigate(["/brands"])
   }
 
   toggleModal() {

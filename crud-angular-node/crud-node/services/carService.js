@@ -2,7 +2,12 @@ const dbData = require('../dbConfig')
 
 async function getAllCars() {
   const [rows] = await dbData.query(
-    'SELECT carsModel.name, carsBrand.brand, carsColor.color FROM carsModel INNER JOIN carsBrand ON carsModel.id = carsBrand.id INNER JOIN carsColor ON carsBrand.id = carsColor.id');
+    `SELECT carsModel.name, carsBrand.brand, carsColor.color 
+    FROM carsModel 
+    INNER JOIN carsBrand 
+    ON carsModel.id = carsBrand.id 
+    INNER JOIN carsColor 
+    ON carsBrand.id = carsColor.id`);
   // const [rowsBrand] = await dbData.query(
   //   'SELECT * FROM carsBrand');
   // const [rowsColor] = await dbData.query(
@@ -66,8 +71,22 @@ async function deleteCar(del) {
   }
 }
 
+async function getAllCarsColor() {
+  const [rows] = await dbData.query(
+    `SELECT * FROM carsColor`)
+  return rows
+}
+
+async function getAllCarsBrand() {
+  const [rows] = await dbData.query(
+    `SELECT * FROM carsBrand`)
+  return rows
+}
+
 module.exports = {
   getAllCars,
   addCar,
-  deleteCar
+  deleteCar,
+  getAllCarsColor,
+  getAllCarsBrand
 };

@@ -27,5 +27,15 @@ export class CarService {
     return this.http.delete(`${this.dbUrl}`, { params })
   }
 
+  getAllCarColors() {
+    return this.http.get(`${this.dbUrl}/color`)
+  }
+
+  getAllCarsBrand() {
+    console.log("asdf");
+    
+    return this.http.get(`${this.dbUrl}/brand`)
+  }
+
 }
 
