@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Car } from 'src/app/interfaces/cars';
 import { CarService } from 'src/app/services/cars.service'; 
+
 
 @Component({
   selector: 'app-color-crud',
@@ -11,17 +12,19 @@ export class ColorCrudComponent implements OnInit{
 
   colors:Car[] = []
 
+
   ngOnInit(): void {
     this.getCarsColorList()
   }
 
-  constructor(private carService:CarService){}
+  constructor(
+    private carService:CarService){}
 
-  
   getCarsColorList() {
     this.carService.getAllCarColors()
     .subscribe((response:any) => {
       this.colors = response
+      
     })
   }
 

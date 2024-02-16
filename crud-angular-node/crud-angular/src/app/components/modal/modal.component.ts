@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Car } from 'src/app/interfaces/cars';
 import { CarService } from 'src/app/services/cars.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { CarService } from 'src/app/services/cars.service';
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
 })
-export class ModalComponent {
+export class ModalComponent implements OnInit{
 
   dataCar = {
     name: "",
@@ -15,17 +16,23 @@ export class ModalComponent {
     color: ""
   }
 
+  colors:Car[] = []
+
   
   @Input() action!:string
-
   @Input() deletedCar!:string
   
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
   @Output() inputData: EventEmitter<void> = new EventEmitter<void>();
   
+  ngOnInit(): void {
+    this.getCarsColorList()
+  }
 
-  constructor(private carService: CarService, private router: Router){}
-  
+  constructor(
+    private carService: CarService, 
+    private router: Router){}
+
   addCar() {
     this.carService.addCar(this.dataCar)
     .subscribe((response:any) => {
@@ -39,6 +46,14 @@ export class ModalComponent {
     .subscribe((response:any) => {
       this.inputData.emit()
       this.toggleModal()
+    })
+  }
+
+  getCarsColorList() {
+    this.carService.getAllCarColors()
+    .subscribe((response:any) => {
+      this.colors = response
+      
     })
   }
 

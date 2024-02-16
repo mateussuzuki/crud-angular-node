@@ -12,7 +12,7 @@ export class CrudPageComponent {
 
   cars: Car[] = []
 
-  toggle: boolean = false
+  toggle: boolean = true
   action:string = "add"
 
   deletedCar!:string

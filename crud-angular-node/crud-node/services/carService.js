@@ -8,16 +8,6 @@ async function getAllCars() {
     ON carsModel.id = carsBrand.id 
     INNER JOIN carsColor 
     ON carsBrand.id = carsColor.id`);
-  // const [rowsBrand] = await dbData.query(
-  //   'SELECT * FROM carsBrand');
-  // const [rowsColor] = await dbData.query(
-  //   'SELECT * FROM carsColor');
-
-  // return {
-  //   rowsModel,
-  //   rowsBrand,
-  //   rowsColor
-  // }
   return rows
 }
 
