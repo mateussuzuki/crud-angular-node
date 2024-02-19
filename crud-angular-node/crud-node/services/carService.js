@@ -30,11 +30,14 @@ async function addCar(data) {
   }
 }
 
-async function editCar(edit) {
+async function editCar(id, edit) {
   try {
     const [car] = await dbData.query(
-      `INSERT INTO carsModel
-      WHERE id = ?`, [del])
+      `UPDATE carsModel
+      SET name = ?, idBrand = ?, idColor = ? 
+      WHERE id = ?`,
+      [edit.name, edit.brand, edit.color, id]
+    )
     return car
 
   } catch (error) {
@@ -74,4 +77,6 @@ module.exports = {
   deleteCar,
   getAllCarsColor,
   getAllCarsBrand,
+  editCar
+  
 };

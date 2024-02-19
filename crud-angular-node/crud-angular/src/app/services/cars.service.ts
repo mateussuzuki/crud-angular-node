@@ -20,14 +20,19 @@ export class CarService {
     return this.http.post(`${this.dbUrl}`, data)
   }
 
-  editCar(edit:any):any {
-    const params = new HttpParams().set('id', edit)
-    console.log(params);
+  // editCar(id:any, edit:any):any {
+  //   // const params = new HttpParams().set('id', id)
+  //   // console.log(params);
     
-    return this.http.put(`${this.dbUrl}`, { params })
+  //   return this.http.put(`${this.dbUrl}?id=${id}`, edit)
+  // }
+
+  editCar(id: any, edit: any): any {
+    return this.http.put(`${this.dbUrl}/${id}?id=${id}`, edit);
   }
 
-  deleteCar(del:any): any{    
+  
+  deleteCar(del:any):any{    
     const params = new HttpParams().set('id', del)
     return this.http.delete(`${this.dbUrl}`, { params })
   }

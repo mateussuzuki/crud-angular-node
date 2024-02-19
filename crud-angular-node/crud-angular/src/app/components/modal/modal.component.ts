@@ -22,7 +22,7 @@ export class ModalComponent implements OnInit{
   
   @Input() action!:string
   @Input() deletedCar!:string
-  @Input() editedCar!:any
+  @Input() editedCar!:string
   
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
   @Output() inputData: EventEmitter<void> = new EventEmitter<void>();
@@ -45,18 +45,18 @@ export class ModalComponent implements OnInit{
   }
 
   editCar() {
-    this.carService.editCar(this.editedCar)
+    this.carService.editCar(this.editedCar ,this.dataCar)
     .subscribe((response:any) => {
-      console.log(this.editedCar);
-      
       this.inputData.emit()
       this.toggleModal()
     })
+    
   }
 
   deleteCar() {
     this.carService.deleteCar(this.deletedCar)
     .subscribe((response:any) => {
+      
       this.inputData.emit()
       this.toggleModal()
     })
@@ -66,6 +66,7 @@ export class ModalComponent implements OnInit{
     this.carService.getAllCarColors()
     .subscribe((response:any) => {
       this.colors = response
+      
     })
   }
 

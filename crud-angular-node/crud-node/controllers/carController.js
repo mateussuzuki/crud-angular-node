@@ -53,10 +53,11 @@ router.delete('/', async (req, res) => {
   }
 });
 
-router.put('/', async (req, res) => {
+router.put('/:id', async (req, res) => {
+
   
   try {
-    const car = await carService.addCar(req.body);
+    const car = await carService.editCar(req.query.id, req.body);
     res.json(car);
   } catch (error) {
     res.status(500).json({ error: error.message });

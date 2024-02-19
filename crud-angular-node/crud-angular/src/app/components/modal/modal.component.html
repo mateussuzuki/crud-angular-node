@@ -17,7 +17,7 @@
       <input type="text" 
       id="name" 
       name="name" 
-      class="form-control" 
+      class="form-control"
       [(ngModel)]="dataCar.name" 
       placeholder="name"
       required>
@@ -27,9 +27,7 @@
 
   <div class="mb-3 row" 
   *ngIf="action != 'delete' && action != 'color' && action != 'edit'">
-    <label for="name" class="form-label col-12">
-      <h2>Brand</h2>
-    </label>
+    <h2>Brand</h2>
     <div class="col-11">
       <select class="form-select" 
       [(ngModel)]="dataCar.brand">
@@ -47,9 +45,7 @@
 
   <div class="mb-3 row" 
   *ngIf="action != 'delete' && action != 'color' && action != 'edit'">
-    <label for="name" class="form-label col-12">
-      <h2>Color</h2>
-    </label>
+    <h2>Color</h2>
     <div class="col-11">
       <select class="form-select" 
       [(ngModel)]="dataCar.color">
@@ -58,7 +54,8 @@
       </select>
     </div>
     <div class="col-1">
-      <button class="btn btn-primary mx-1 btnAddColorBrand" (click)="addColor()">
+      <button class="btn btn-primary mx-1 btnAddColorBrand" 
+      (click)="addColor()">
         <i class="bi bi-plus"></i>
       </button>
     </div>
@@ -75,8 +72,8 @@
 
 
 
-  <div class="" *ngIf="action == 'edit'">
-    <div class="mb-3" >
+  <div *ngIf="action == 'edit'">
+    <div class="mb-3">
       <label for="name" class="form-label">
         <h2>Name</h2>
       </label>
@@ -87,11 +84,11 @@
         class="form-control" 
         [(ngModel)]="dataCar.name" 
         required>
-  
+
       </div>
     </div>
-  
-    <div class="mb-3 row" >
+
+    <div class="mb-3 row">
       <label for="name" class="form-label col-12">
         <h2>Brand</h2>
       </label>
@@ -109,8 +106,8 @@
         </button>
       </div>
     </div>
-  
-    <div class="mb-3 row" >
+
+    <div class="mb-3 row">
       <label for="name" class="form-label col-12">
         <h2>Color</h2>
       </label>
@@ -122,7 +119,8 @@
         </select>
       </div>
       <div class="col-1">
-        <button class="btn btn-primary mx-1 btnAddColorBrand" (click)="addColor()">
+        <button class="btn btn-primary mx-1 btnAddColorBrand" 
+        (click)="addColor()">
           <i class="bi bi-plus"></i>
         </button>
       </div>
@@ -132,14 +130,15 @@
 
 
   <div class="d-grid gap-2 d-md-flex justify-content-end">
-    <button *ngIf="action == 'edit'" 
-    class="btn btn-secondary"
-    (click)="editCar()">update User</button>
-
+    
     <button *ngIf="action == 'add'" 
     class="btn btn-primary" 
     (click)="addCar()">Add User</button>
-
+    
+    <button *ngIf="action == 'edit'" 
+    class="btn btn-secondary" 
+    (click)="editCar()">update User</button>
+    
     <button *ngIf="action == 'delete'" 
     class="btn btn-danger" 
     (click)="deleteCar()">DELETE</button>

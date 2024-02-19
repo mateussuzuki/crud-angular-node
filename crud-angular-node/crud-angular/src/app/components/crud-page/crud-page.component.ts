@@ -42,14 +42,15 @@ export class CrudPageComponent {
 
   editCar(edit:any) {
     this.editedCar = edit
-    console.log(this.editedCar);
-     
+
+             
     this.action = "edit"
     this.toggleModal()
   }
 
   deleteCar(del:any) {
     this.deletedCar = del
+    
     this.action = "delete"
     this.toggleModal()
   }
