@@ -1,18 +1,20 @@
 <div class="containerModal row">
   <div class="col-10 mb-4">
-    <h1 *ngIf="action != 'delete' && action != 'color'">Add New User</h1>
+    <h1 *ngIf="action == 'add'">Add New User</h1>
     <h1 *ngIf="action == 'color'">add New Color</h1>
+    <h1 *ngIf="action == 'brand'">add New Brand</h1>
+    <h1 *ngIf="action == 'edit'">Edit user</h1>
   </div>
   <div class="col-1">
     <img width="50" height="50" src="https://img.icons8.com/ios/50/multiply.png" (click)="toggleModal()" />
   </div>
 
-  <div class="mb-3" *ngIf="action != 'delete' && action != 'color'">
+  <div class="mb-3" *ngIf="action != 'delete' && action != 'color' && action != 'edit'">
     <label for="name" class="form-label">
       <h2>Name</h2>
     </label>
     <div class="input-group mb-3">
-      <input type="text"
+      <input type="text" 
       id="name" 
       name="name" 
       class="form-control" 
@@ -23,36 +25,36 @@
     </div>
   </div>
 
-  <div class="mb-3 row" *ngIf="action != 'delete' && action != 'color'">
+  <div class="mb-3 row" 
+  *ngIf="action != 'delete' && action != 'color' && action != 'edit'">
     <label for="name" class="form-label col-12">
       <h2>Brand</h2>
     </label>
     <div class="col-11">
-      <div class="input-group mb-3">
-        <input type="text" 
-        id="brand" 
-        name="brand"
-        class="form-control" 
-        [(ngModel)]="dataCar.brand" 
-        placeholder="brand"
-        required>
-      </div>
+      <select class="form-select" 
+      [(ngModel)]="dataCar.brand">
+        <option *ngFor="let brand of brands; let i = index" 
+        [value]="brand.id"> {{ brand.brand }} </option>
+      </select>
     </div>
     <div class="col-1">
-      <button class="btn btn-primary mx-1 btnAddColorBrand" (click)="addBrand()">
+      <button class="btn btn-primary mx-1 btnAddColorBrand" 
+      (click)="addBrand()">
         <i class="bi bi-plus"></i>
       </button>
     </div>
   </div>
 
-  <div class="mb-3 row" *ngIf="action != 'delete' && action != 'color'">
+  <div class="mb-3 row" 
+  *ngIf="action != 'delete' && action != 'color' && action != 'edit'">
     <label for="name" class="form-label col-12">
       <h2>Color</h2>
     </label>
     <div class="col-11">
-      <select class="form-select">
-        <option selected disabled>colors</option>
-          <option *ngFor="let color of colors; let i = index" [value]="color.color"> {{ color.color }} </option>
+      <select class="form-select" 
+      [(ngModel)]="dataCar.color">
+        <option *ngFor="let color of colors; let i = index" 
+        [value]="color.id"> {{ color.color }} </option>
       </select>
     </div>
     <div class="col-1">
@@ -62,15 +64,77 @@
     </div>
   </div>
 
-  
+
+
+
 
   <div *ngIf="action == 'delete'">
-    <h1>Are you sure you want to delete this user? the action cannot be reversed</h1>
+    <h1 class="text-danger">DELETE USER</h1>
+    <h2>Are you sure you want to delete this user? the action cannot be reversed</h2>
   </div>
+
+
+
+  <div class="" *ngIf="action == 'edit'">
+    <div class="mb-3" >
+      <label for="name" class="form-label">
+        <h2>Name</h2>
+      </label>
+      <div class="input-group mb-3">
+        <input type="text" 
+        id="name" 
+        name="name" 
+        class="form-control" 
+        [(ngModel)]="dataCar.name" 
+        required>
+  
+      </div>
+    </div>
+  
+    <div class="mb-3 row" >
+      <label for="name" class="form-label col-12">
+        <h2>Brand</h2>
+      </label>
+      <div class="col-11">
+        <select class="form-select" 
+        [(ngModel)]="dataCar.brand">
+          <option *ngFor="let brand of brands; let i = index" 
+          [value]="brand.id"> {{ brand.brand }} </option>
+        </select>
+      </div>
+      <div class="col-1">
+        <button class="btn btn-primary mx-1 btnAddColorBrand" 
+        (click)="addBrand()">
+          <i class="bi bi-plus"></i>
+        </button>
+      </div>
+    </div>
+  
+    <div class="mb-3 row" >
+      <label for="name" class="form-label col-12">
+        <h2>Color</h2>
+      </label>
+      <div class="col-11">
+        <select class="form-select" 
+        [(ngModel)]="dataCar.color">
+          <option *ngFor="let color of colors; let i = index" 
+          [value]="color.id"> {{ color.color }} </option>
+        </select>
+      </div>
+      <div class="col-1">
+        <button class="btn btn-primary mx-1 btnAddColorBrand" (click)="addColor()">
+          <i class="bi bi-plus"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
 
   <div class="d-grid gap-2 d-md-flex justify-content-end">
     <button *ngIf="action == 'edit'" 
-    class="btn btn-secondary">update User</button>
+    class="btn btn-secondary"
+    (click)="editCar()">update User</button>
 
     <button *ngIf="action == 'add'" 
     class="btn btn-primary" 

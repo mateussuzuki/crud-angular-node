@@ -33,7 +33,6 @@ router.get('/brand', async (req, res) => {
 });
 
 
-
 router.post('/', async (req, res) => {
   
   try {
@@ -48,6 +47,16 @@ router.delete('/', async (req, res) => {
 
   try {
     const car = await carService.deleteCar(req.query.id);
+    res.json(car);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.put('/', async (req, res) => {
+  
+  try {
+    const car = await carService.addCar(req.body);
     res.json(car);
   } catch (error) {
     res.status(500).json({ error: error.message });

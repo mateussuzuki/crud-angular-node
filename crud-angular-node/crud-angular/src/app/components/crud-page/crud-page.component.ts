@@ -12,10 +12,11 @@ export class CrudPageComponent {
 
   cars: Car[] = []
 
-  toggle: boolean = true
+  toggle: boolean = false
   action:string = "add"
 
-  deletedCar!:string
+  deletedCar!:any
+  editedCar!:any
 
   constructor(private carService:CarService) { }
 
@@ -31,24 +32,24 @@ export class CrudPageComponent {
     this.carService.getAllCars()
     .subscribe((response:any) => {
       this.cars = response
-      console.log(this.cars);
-      
     })
   }
-
 
   addCar() {
     this.action = "add"
     this.toggleModal()
   }
 
-  editCar() {
+  editCar(edit:any) {
+    this.editedCar = edit
+    console.log(this.editedCar);
+     
     this.action = "edit"
     this.toggleModal()
   }
 
   deleteCar(del:any) {
-    this.deletedCar = del    
+    this.deletedCar = del
     this.action = "delete"
     this.toggleModal()
   }

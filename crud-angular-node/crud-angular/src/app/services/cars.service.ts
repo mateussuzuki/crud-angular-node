@@ -17,9 +17,14 @@ export class CarService {
   }
 
   addCar(data:any):any {
-    console.log("chegou");
-    
     return this.http.post(`${this.dbUrl}`, data)
+  }
+
+  editCar(edit:any):any {
+    const params = new HttpParams().set('id', edit)
+    console.log(params);
+    
+    return this.http.put(`${this.dbUrl}`, { params })
   }
 
   deleteCar(del:any): any{    
@@ -32,8 +37,6 @@ export class CarService {
   }
 
   getAllCarsBrand() {
-    console.log("asdf");
-    
     return this.http.get(`${this.dbUrl}/brand`)
   }
 

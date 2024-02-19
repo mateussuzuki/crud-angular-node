@@ -1,5 +1,5 @@
-<div class="container">
-  <h2>Cars</h2>
+<div class="container card p-3 mt-4">
+  <h2 class="mt-2">Cars</h2>
   <hr>
   <table class="table">
     <thead>
@@ -24,7 +24,8 @@
         <td>{{ car.color }}</td>
         <td>
           <div>
-            <button class="btn btn-primary mx-1" (click)="editCar()">
+            <button class="btn btn-primary mx-1" 
+            (click)="editCar(car.id)">
               <i class="bi bi-pencil-square"></i>
             </button>
 
