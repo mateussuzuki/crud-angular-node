@@ -53,6 +53,17 @@ router.delete('/', async (req, res) => {
   }
 });
 
+router.delete('/color', async (req, res) => {
+
+  try {
+    const car = await carService.deleteColor(req.query.id);
+      res.json(car); 
+  } catch (error) {
+    
+    res.status(500).json({ error: error.message });
+  }
+});
+
 router.put('/:id', async (req, res) => {
 
   
@@ -60,7 +71,7 @@ router.put('/:id', async (req, res) => {
     const car = await carService.editCar(req.query.id, req.body);
     res.json(car);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 });
 

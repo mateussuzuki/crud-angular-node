@@ -61,9 +61,42 @@ async function deleteCar(del) {
 
 async function getAllCarsColor() {
   const [rows] = await dbData.query(
-    `SELECT * FROM carsColor`)
+    `SELECT * FROM carsColor
+    ORDER BY carsColor.id`)
   return rows
 }
+
+// async function deleteColor(del) {
+//   const [rows] = await dbData.query(
+//     `DELETE FROM carsColor
+//     WHERE id = ?`, [del])
+//   return rows
+// }
+
+async function deleteColor(del) {
+  try {
+    const [checkRows] = await dbData.query(
+      `SELECT COUNT(*) AS count FROM carsModel WHERE idColor = ?`, [del]
+    );
+  
+    const isColorInUse = checkRows[0].count > 0;
+  
+    if (isColorInUse) {
+      throw new Error('Erro ao deletar essa cor, pois ela está sendo usada em algum carro');
+    }
+  
+    const [deleteRows] = await dbData.query(
+      `DELETE FROM carsColor WHERE id = ?`, [del]
+    );
+  
+    return deleteRows;
+
+  } catch (error) {
+    throw error
+  }
+} 
+
+
 
 async function getAllCarsBrand() {
   const [rows] = await dbData.query(
@@ -77,6 +110,7 @@ module.exports = {
   deleteCar,
   getAllCarsColor,
   getAllCarsBrand,
-  editCar
+  editCar,
+  deleteColor
   
 };

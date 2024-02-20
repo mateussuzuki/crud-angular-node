@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Car } from 'src/app/interfaces/cars';
+import { CarColorService } from 'src/app/services/carColor.service';
 import { CarService } from 'src/app/services/cars.service';
 
 @Component({
@@ -34,6 +35,7 @@ export class ModalComponent implements OnInit{
 
   constructor(
     private carService: CarService, 
+    private carColorService: CarColorService,
     private router: Router){}
 
   addCar() {
@@ -63,7 +65,7 @@ export class ModalComponent implements OnInit{
   }
 
   getCarsColorList() {
-    this.carService.getAllCarColors()
+    this.carColorService.getAllCarColors()
     .subscribe((response:any) => {
       this.colors = response
       

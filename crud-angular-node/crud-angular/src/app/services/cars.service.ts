@@ -20,13 +20,6 @@ export class CarService {
     return this.http.post(`${this.dbUrl}`, data)
   }
 
-  // editCar(id:any, edit:any):any {
-  //   // const params = new HttpParams().set('id', id)
-  //   // console.log(params);
-    
-  //   return this.http.put(`${this.dbUrl}?id=${id}`, edit)
-  // }
-
   editCar(id: any, edit: any): any {
     return this.http.put(`${this.dbUrl}/${id}?id=${id}`, edit);
   }
@@ -37,9 +30,9 @@ export class CarService {
     return this.http.delete(`${this.dbUrl}`, { params })
   }
 
-  getAllCarColors() {
-    return this.http.get(`${this.dbUrl}/color`)
-  }
+  // getAllCarColors() {
+  //   return this.http.get(`${this.dbUrl}/color`)
+  // }
 
   getAllCarsBrand() {
     return this.http.get(`${this.dbUrl}/brand`)

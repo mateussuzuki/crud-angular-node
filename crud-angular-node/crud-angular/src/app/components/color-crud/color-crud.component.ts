@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Car } from 'src/app/interfaces/cars';
+import { CarColorService } from 'src/app/services/carColor.service';
 import { CarService } from 'src/app/services/cars.service'; 
 
 
@@ -18,13 +19,22 @@ export class ColorCrudComponent implements OnInit{
   }
 
   constructor(
-    private carService:CarService){}
+    private carColorService:CarColorService){}
 
   getCarsColorList() {
-    this.carService.getAllCarColors()
+    this.carColorService.getAllCarColors()
     .subscribe((response:any) => {
       this.colors = response
-      
+    })
+  }
+
+  deleteColor(del:number) {
+    let err:string 
+    this.carColorService.deleteColor(del)
+    .subscribe((response:any) => {
+      this.getCarsColorList()
+    },(error:any) => {
+      window.alert(JSON.stringify(error.error.error))
     })
   }
 
