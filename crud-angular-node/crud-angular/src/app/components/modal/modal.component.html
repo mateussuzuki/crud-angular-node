@@ -28,7 +28,7 @@
     <div class="col-11">
       <select class="form-select" 
       [(ngModel)]="dataCar.brand">
-        <option *ngFor="let brand of brands; let i = index" 
+        <option *ngFor="let brand of brands" 
         [value]="brand.id"> {{ brand.brand }} </option>
       </select>
     </div>
@@ -46,7 +46,7 @@
     <div class="col-11">
       <select class="form-select" 
       [(ngModel)]="dataCar.color">
-        <option *ngFor="let color of colors; let i = index" 
+        <option *ngFor="let color of colors" 
         [value]="color.id"> {{ color.color }} </option>
       </select>
     </div>

@@ -13,14 +13,21 @@
       <h1>Colors</h1>
     </div>
 
-    <div *ngIf="alert" class="col-6 alert alert-danger alert-dismissible d-flex align-items-center" role="alert">
+    <div *ngIf="alert == 'error'" class="col-6 alert alert-danger alert-dismissible d-flex align-items-center" role="alert">
       <svg class="bi me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
       <div>
         <h3>This color is being used on some car</h3>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     </div>
-    
+
+    <div *ngIf="alert == 'success'"     class="alert alert-success d-flex align-items-center" role="alert">
+      <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+      <div>
+        An example success alert with an icon
+      </div>
+    </div>
+
   </div>
   
 
@@ -46,7 +53,7 @@
         <td>
           <div>
             <button class="btn btn-primary mx-1">
-              <i class="bi bi-pencil-square"></i>
+              <i class="bi bi-pencil-square" (click)="editCar()"></i>
             </button>
 
             <button class="btn btn-danger mx-1" (click)="deleteColor(color.id)">
@@ -62,6 +69,7 @@
 <div *ngIf="toggle">
   <app-modal-color 
   (toggle)="toggleModal()"
+  (inputData)="getCarsColorList()"
   [action]="action"/>
   <div class="backModal" (click)=toggleModal()></div>
 </div>

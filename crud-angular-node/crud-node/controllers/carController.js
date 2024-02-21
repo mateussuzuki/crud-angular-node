@@ -12,15 +12,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/color', async (req, res) => {
-  
-  try {
-    const colors = await carService.getAllCarsColor();
-    res.json(colors);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
 
 router.get('/brand', async (req, res) => {
   
@@ -44,7 +35,7 @@ router.post('/', async (req, res) => {
 });
 
 router.delete('/', async (req, res) => {
-
+  
   try {
     const car = await carService.deleteCar(req.query.id);
     res.json(car);
@@ -53,11 +44,31 @@ router.delete('/', async (req, res) => {
   }
 });
 
-router.delete('/color', async (req, res) => {
+router.get('/color', async (req, res) => {
+  
+  try {
+    const colors = await carService.getAllCarsColor();
+    res.json(colors);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
+router.post('/color', async (req, res) => {
+  
+  try {
+    const color = await carService.addCarColor(req.body);
+    res.json(color);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.delete('/color', async (req, res) => {
+  
   try {
     const car = await carService.deleteColor(req.query.id);
-      res.json(car); 
+    res.json(car); 
   } catch (error) {
     
     res.status(500).json({ error: error.message });

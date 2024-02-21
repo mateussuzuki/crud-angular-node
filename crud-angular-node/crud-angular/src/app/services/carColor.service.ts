@@ -16,11 +16,16 @@ export class CarColorService {
     return this.http.get(`${this.dbUrl}/color`)
   }
 
+  addCarColor(color:any) {
+    return this.http.post(`${this.dbUrl}/color`, color)
+  }
+
   deleteColor(id:any) {
     const params = new HttpParams().set('id', id)
     return this.http.delete(`${this.dbUrl}/color`, { params })
     
   }
+
 
 
 }

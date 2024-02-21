@@ -66,12 +66,18 @@ async function getAllCarsColor() {
   return rows
 }
 
-// async function deleteColor(del) {
-//   const [rows] = await dbData.query(
-//     `DELETE FROM carsColor
-//     WHERE id = ?`, [del])
-//   return rows
-// }
+async function addCarColor(data) {
+
+  const carColor = 
+  `INSERT INTO carsColor(color)
+    VALUE (?)`
+
+  const [rowsColor] = await dbData.query(
+    carColor, [data.color]
+    );
+  return rowsColor
+}
+
 
 async function deleteColor(del) {
   try {
@@ -111,6 +117,7 @@ module.exports = {
   getAllCarsColor,
   getAllCarsBrand,
   editCar,
-  deleteColor
+  deleteColor,
+  addCarColor
   
 };

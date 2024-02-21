@@ -10,28 +10,32 @@
 
 
   
-  <div class="mb-3 row" *ngIf="action == 'add' || action == 'edit'">
+  <div class="mb-3 row" *ngIf="action == 'Add' || action == 'Edit'">
     <h2>Color</h2>
     <div class="col-11">
-      <select class="form-select">
-      </select>
-    </div>
-    <div class="col-1">
-      <button class="btn btn-primary mx-1 btnAddColorBrand">
-        <i class="bi bi-plus"></i>
-      </button>
+
+      <div class="input-group mb-3">
+        <input type="text" 
+        id="color" 
+        name="color" 
+        class="form-control"
+        [(ngModel)]="dataColor.color" 
+        placeholder="color"
+        required>
+  
+      </div>
     </div>
   </div>
 
-  <ng-template #delete>
-    <h2>Are you sure you want to delete this user? the action cannot be reversed</h2>
-  </ng-template>
-
-
   <div class="d-grid gap-2 d-md-flex justify-content-end">
     
-    <button *ngIf="action == 'add'" 
-    class="btn btn-primary">Add User</button>
+    <button *ngIf="action == 'Add'"
+    class="btn btn-primary" 
+    (click)="addCarColor()">Add color</button>
+
+    <button *ngIf="action == 'Edit'"
+    class="btn btn-primary">edit color</button>
+
     
 
   </div>
