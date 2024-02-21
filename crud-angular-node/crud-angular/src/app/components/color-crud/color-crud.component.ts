@@ -1,7 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Car } from 'src/app/interfaces/cars';
 import { CarColorService } from 'src/app/services/carColor.service';
-import { CarService } from 'src/app/services/cars.service'; 
+
 
 
 @Component({
@@ -12,11 +12,9 @@ import { CarService } from 'src/app/services/cars.service';
 export class ColorCrudComponent implements OnInit{
 
   colors:Car[] = []
-
   toggle:boolean = false
-
   action:string = ""
-
+  alert!:boolean
 
   ngOnInit(): void {
     this.getCarsColorList()
@@ -41,8 +39,10 @@ export class ColorCrudComponent implements OnInit{
     this.carColorService.deleteColor(del)
     .subscribe((response:any) => {
       this.getCarsColorList()
+      window.alert("Cor apagada com sucesso")
     },(error:any) => {
-      window.alert(JSON.stringify(error.error.error))
+      this.alert = !this.alert
+      
     })
   }
 

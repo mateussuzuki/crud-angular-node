@@ -36,7 +36,7 @@ export class CrudPageComponent {
   }
 
   addCar() {
-    this.action = "add"
+    this.action = "Add"
     this.toggleModal()
   }
 
@@ -44,14 +44,14 @@ export class CrudPageComponent {
     this.editedCar = edit
 
              
-    this.action = "edit"
+    this.action = "Edit"
     this.toggleModal()
   }
 
   deleteCar(del:any) {
     this.deletedCar = del
     
-    this.action = "delete"
+    this.action = "Delete"
     this.toggleModal()
   }
 

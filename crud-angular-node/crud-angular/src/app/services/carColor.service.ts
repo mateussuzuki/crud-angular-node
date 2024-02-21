@@ -1,7 +1,6 @@
 
 import { Injectable } from "@angular/core"; 
 import { HttpClient, HttpParams } from "@angular/common/http"
-import { catchError } from "rxjs/internal/operators/catchError";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,6 @@ export class CarColorService {
   }
 
   deleteColor(id:any) {
-    
     const params = new HttpParams().set('id', id)
     return this.http.delete(`${this.dbUrl}/color`, { params })
     
