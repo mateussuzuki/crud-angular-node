@@ -13,6 +13,10 @@ export class ColorCrudComponent implements OnInit{
 
   colors:Car[] = []
 
+  toggle:boolean = false
+
+  action:string = ""
+
 
   ngOnInit(): void {
     this.getCarsColorList()
@@ -28,14 +32,22 @@ export class ColorCrudComponent implements OnInit{
     })
   }
 
+  addColor() {
+    this.action = "add"
+    this.toggleModal()
+  }
+
   deleteColor(del:number) {
-    let err:string 
     this.carColorService.deleteColor(del)
     .subscribe((response:any) => {
       this.getCarsColorList()
     },(error:any) => {
       window.alert(JSON.stringify(error.error.error))
     })
+  }
+
+  toggleModal() {
+    this.toggle = !this.toggle
   }
 
 }

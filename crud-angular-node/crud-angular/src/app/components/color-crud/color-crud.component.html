@@ -35,3 +35,10 @@
     </tbody>
   </table>
 </div>
+
+<div *ngIf="toggle">
+  <app-modal 
+  (toggle)="toggleModal()"
+  [action]="action"/>
+  <div class="backModal" (click)=toggleModal()></div>
+</div>
