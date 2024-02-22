@@ -38,12 +38,9 @@ async function editColor(id, edit) {
 
 async function deleteColor(del) {
   try {
-    const [checkRows] = await dbData.query(
-      `SELECT COUNT(*) AS count FROM carsModel WHERE idColor = ?`, [del]
-    );
-
     const [deleteRows] = await dbData.query(
-      `DELETE FROM carsColor WHERE id = ?`, [del]
+      `DELETE FROM carsColor 
+      WHERE id = ?`, [del]
     );
   
     return deleteRows;

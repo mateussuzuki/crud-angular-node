@@ -33,16 +33,16 @@ router.post('/', async (req, res) => {
 //   }
 // });
 
-// router.delete('/', async (req, res) => {
+router.delete('/', async (req, res) => {
   
-//   try {
-//     const car = await carColorService.deleteColor(req.query.id);
-//     res.json(car); 
-//   } catch (error) {
+  try {
+    const brand = await carBrandService.deleteBrand(req.query.id);
+    res.json(brand); 
+  } catch (error) {
     
-//     res.status(500).json({ error: error.message });
-//   }
-// });
+    res.status(500).json({ error: error.message });
+  }
+});
 
 
 module.exports = router;

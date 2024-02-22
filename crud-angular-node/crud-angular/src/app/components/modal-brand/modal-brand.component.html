@@ -4,6 +4,7 @@
   <div class="col-10 mb-4">
     <h1> {{ action }} </h1>
   </div>
+
   <div class="col-1">
     <img width="50" height="50" src="https://img.icons8.com/ios/50/multiply.png" (click)="toggleModal()" />
   </div>
@@ -36,14 +37,15 @@
     <button *ngIf="action == 'Add'"
     class="btn btn-primary" 
     (click)="addBrand()"
-    [disabled]="!dataBrand.brand">Add Brand</button>
+    [disabled]="!dataBrand.brand">{{ action }} Brand</button>
 
     <!-- <button *ngIf="action == 'Edit'"
     class="btn btn-primary"
     [disabled]="!dataColor.color">edit color</button> -->
 
-    <!-- <button *ngIf="action == 'Delete'"
-    class="btn btn-primary">delete color</button> -->
+    <button *ngIf="action == 'Delete'"
+    class="btn btn-primary"
+    (click)="deleteBrand()">delete color</button>
 
     
 

@@ -21,8 +21,23 @@ async function addBrand(data) {
   }
 }
 
+async function deleteBrand(del) {
+  try {
+    const carBrand = await dbData.query(
+      `DELETE FROM carsBrand 
+      WHERE id = ?`, [del]
+    )   
+
+    return carBrand
+
+  } catch(error) {
+    throw error
+  }
+} 
+
 
 module.exports = {
-  addBrand
+  addBrand,
+  deleteBrand
   
 };

@@ -15,4 +15,9 @@ export class CarBrandService {
   addBrand(brand:any) {
     return this.http.post(`${this.dbUrl}`, brand)
   }
+
+  deleteBrand(del:any) {
+    const params = new HttpParams().set('id', del)
+    return this.http.delete(`${this.dbUrl}`, { params })
+  }
 }
