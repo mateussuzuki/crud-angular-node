@@ -9,22 +9,24 @@ import { CarColorService } from 'src/app/services/carColor.service';
 })
 export class ModalColorComponent implements OnInit{
 
-
-  constructor(private carColorService:CarColorService){}
-
+  
   colors:Car[] = []
-
+  
   dataColor = {
     color: ""
   }
+  
+  constructor(private carColorService:CarColorService){}
 
   ngOnInit(): void {
     this.getCarsColorList()
   }
 
   @Input() action!:string
+  @Input() deletedColor!:number
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
   @Output() inputData: EventEmitter<void> = new EventEmitter<void>();
+  @Output() alert: EventEmitter<string> = new EventEmitter<string>();
 
   getCarsColorList() {
     this.carColorService.getAllCarColors()
@@ -39,6 +41,20 @@ export class ModalColorComponent implements OnInit{
       this.colors = response
       this.toggleModal()
       this.inputData.emit()
+    })
+  }
+
+  editColor() {}
+
+  deleteColor() {
+    this.carColorService.deleteColor(this.deletedColor)
+    .subscribe((response:any) => {
+      this.alert.emit("success")
+      this.toggleModal()
+      this.inputData.emit()
+    },(error:any) => {
+      this.alert.emit("error")
+      this.toggleModal()
     })
   }
 

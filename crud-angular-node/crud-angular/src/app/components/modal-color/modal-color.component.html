@@ -10,7 +10,7 @@
 
 
   
-  <div class="mb-3 row" *ngIf="action == 'Add' || action == 'Edit'">
+  <div class="mb-3 row" *ngIf="action == 'Add' || action == 'Edit'; else Delete">
     <h2>Color</h2>
     <div class="col-11">
 
@@ -27,14 +27,25 @@
     </div>
   </div>
 
+    <ng-template #Delete>
+      <h1>are you sure? This action cannot be changed</h1>
+    </ng-template>
+
   <div class="d-grid gap-2 d-md-flex justify-content-end">
     
     <button *ngIf="action == 'Add'"
     class="btn btn-primary" 
-    (click)="addCarColor()">Add color</button>
+    (click)="addCarColor()"
+    [disabled]="!dataColor.color">Add color</button>
 
     <button *ngIf="action == 'Edit'"
-    class="btn btn-primary">edit color</button>
+    class="btn btn-primary"
+    (click)="editColor()"
+    [disabled]="!dataColor.color">edit color</button>
+
+    <button *ngIf="action == 'Delete'"
+    class="btn btn-primary"
+    (click)="deleteColor()">delete color</button>
 
     
 
