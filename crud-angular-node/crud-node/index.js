@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const userRoutes = require('./controllers/userController');
 const carsRoutes = require('./controllers/carController');
+const colorsRoutes = require('./controllers/carColorController')
 const cors = require('cors')
 
 const app = express();
@@ -11,6 +12,7 @@ app.use(bodyParser.json());
 
 app.use('/users', userRoutes);
 app.use('/cars', carsRoutes);
+app.use('/colors', colorsRoutes);
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:4200');

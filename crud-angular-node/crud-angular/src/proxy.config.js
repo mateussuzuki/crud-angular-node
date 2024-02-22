@@ -2,7 +2,8 @@ const PROXY_CONFIG = [
   {
     context: [
       "/users",
-      "/cars"
+      "/colors",
+      "/cars",
     ],
     target: "http://localhost:3000/",
     secure: false,

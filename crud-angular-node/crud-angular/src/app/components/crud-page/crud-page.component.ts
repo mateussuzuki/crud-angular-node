@@ -42,8 +42,6 @@ export class CrudPageComponent {
 
   editCar(edit:any) {
     this.editedCar = edit
-
-             
     this.action = "Edit"
     this.toggleModal()
   }

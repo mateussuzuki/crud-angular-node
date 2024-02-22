@@ -24,6 +24,7 @@ export class ModalColorComponent implements OnInit{
 
   @Input() action!:string
   @Input() deletedColor!:number
+  @Input() editedColor!:number
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
   @Output() inputData: EventEmitter<void> = new EventEmitter<void>();
   @Output() alert: EventEmitter<string> = new EventEmitter<string>();
@@ -44,7 +45,12 @@ export class ModalColorComponent implements OnInit{
     })
   }
 
-  editColor() {}
+  editColor() {
+    this.carColorService.editCarColor(this.editedColor, this.dataColor)
+    .subscribe((response:any) => {
+      this.colors = response
+    })
+  }
 
   deleteColor() {
     this.carColorService.deleteColor(this.deletedColor)

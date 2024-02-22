@@ -80,7 +80,7 @@ export class ModalComponent implements OnInit{
   }
 
   addColor() {
-    this.router.navigate(["/colors"])
+    this.router.navigate(["/color"])
   }
 
   addBrand() {
