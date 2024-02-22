@@ -84,7 +84,7 @@ export class ModalComponent implements OnInit{
   }
 
   addBrand() {
-    this.router.navigate(["/brands"])
+    this.router.navigate(["/brand"])
   }
 
   toggleModal() {

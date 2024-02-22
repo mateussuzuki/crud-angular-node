@@ -8,7 +8,11 @@ import { CarService } from 'src/app/services/cars.service';
   styleUrls: ['./brand-page.component.scss']
 })
 export class BrandPageComponent implements OnInit {
+
   brands:Car[] = []
+  toggle!:boolean
+
+  action!:string
   
   ngOnInit(): void {
     this.getCarsBrandList()
@@ -22,6 +26,16 @@ export class BrandPageComponent implements OnInit {
     .subscribe((response:any) => {
       this.brands = response
     })
+  }
+
+  toggleModal() {
+    this.toggle = !this.toggle
+
+  }
+
+  addBrand() {
+    this.action = "Add"
+    this.toggleModal()
   }
 
 }

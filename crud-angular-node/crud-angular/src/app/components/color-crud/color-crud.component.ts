@@ -40,8 +40,6 @@ export class ColorCrudComponent implements OnInit{
   editCar(id:number) {
     this.action = "Edit"
     this.editedColor = id
-    console.log(this.editedColor);
-    
     this.toggleModal()
   }
 

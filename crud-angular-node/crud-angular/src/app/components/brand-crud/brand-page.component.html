@@ -8,7 +8,7 @@
         <th>id</th>
         <th>Brand</th>
         <th> 
-          <button class="btn btn-primary mx-1">
+          <button class="btn btn-primary mx-1" (click)="addBrand()">
             <i class="bi bi-plus"></i>
           </button> 
         </th>
@@ -36,3 +36,11 @@
   </table>
 </div>
 
+
+<div *ngIf="toggle">
+  <app-modal-brand
+  (toggle)="toggleModal()"
+  [action]="action"
+  (inputData)="getCarsBrandList()"/>
+  <div class="backModal" (click)=toggleModal()></div>
+</div>

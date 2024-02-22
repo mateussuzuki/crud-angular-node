@@ -1,0 +1,51 @@
+
+
+<div class="containerModal row">
+  <div class="col-10 mb-4">
+    <h1> {{ action }} </h1>
+  </div>
+  <div class="col-1">
+    <img width="50" height="50" src="https://img.icons8.com/ios/50/multiply.png" (click)="toggleModal()" />
+  </div>
+
+
+  
+  <div class="mb-3 row" *ngIf="action == 'Add' || action == 'Edit'; else Delete">
+    <h2>Brand</h2>
+    <div class="col-11">
+
+      <div class="input-group mb-3">
+        <input type="text" 
+        id="color" 
+        name="color" 
+        class="form-control"
+        [(ngModel)]="dataBrand.brand" 
+        placeholder="brand"
+        required>
+  
+      </div>
+    </div>
+  </div>
+
+    <ng-template #Delete>
+      <h1>are you sure? This action cannot be changed</h1>
+    </ng-template>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-end">
+    
+    <button *ngIf="action == 'Add'"
+    class="btn btn-primary" 
+    (click)="addBrand()"
+    [disabled]="!dataBrand.brand">Add Brand</button>
+
+    <!-- <button *ngIf="action == 'Edit'"
+    class="btn btn-primary"
+    [disabled]="!dataColor.color">edit color</button> -->
+
+    <!-- <button *ngIf="action == 'Delete'"
+    class="btn btn-primary">delete color</button> -->
+
+    
+
+  </div>
+</div>

@@ -10,8 +10,9 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { CrudPageComponent } from './components/crud-page/crud-page.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { ColorCrudComponent } from './components/color-crud/color-crud.component';
-import { BrandPageComponent } from './components/brand-page/brand-page.component';
+import { BrandPageComponent } from './components/brand-crud/brand-page.component';
 import { ModalColorComponent } from './components/modal-color/modal-color.component';
+import { ModalBrandComponent } from './components/modal-brand/modal-brand.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ModalColorComponent } from './components/modal-color/modal-color.compon
     ColorCrudComponent,
     BrandPageComponent,
     ModalColorComponent,
+    ModalBrandComponent,
   ],
   imports: [
     BrowserModule,
