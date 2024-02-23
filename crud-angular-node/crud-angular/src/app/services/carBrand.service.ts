@@ -12,8 +12,18 @@ export class CarBrandService {
 
   constructor(private http: HttpClient){}
 
+  getAllCarsBrand() {
+    return this.http.get(`${this.dbUrl}`)
+  }
+
   addBrand(brand:any) {
     return this.http.post(`${this.dbUrl}`, brand)
+  }
+
+  editBrand(id:any, edit:any) {
+    console.log("chegou", id, edit);
+    
+    return this.http.put(`${this.dbUrl}/${id}`, edit)
   }
 
   deleteBrand(del:any) {

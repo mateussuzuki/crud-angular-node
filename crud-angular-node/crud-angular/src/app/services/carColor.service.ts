@@ -21,7 +21,7 @@ export class CarColorService {
   }
 
   editCarColor(id:any, color:any) {
-    return this.http.put(`${this.dbUrl}/${id}?id=${id}`, color)
+    return this.http.put(`${this.dbUrl}/${id}`, color)
   }
 
   deleteColor(id:any) {

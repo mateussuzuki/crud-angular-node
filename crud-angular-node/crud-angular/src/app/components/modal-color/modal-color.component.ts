@@ -32,6 +32,8 @@ export class ModalColorComponent{
   editColor() {
     this.carColorService.editCarColor(this.idColor, this.dataColor)
     .subscribe((response:any) => {
+      this.toggleModal()
+      this.inputData.emit()
     })
   }
 

@@ -9,7 +9,7 @@ import { CarBrandService } from 'src/app/services/carBrand.service';
 export class ModalBrandComponent {
 
   @Input() action!:string
-  @Input() idBrand!:number
+  @Input() idBrand!:any
   @Output() inputData: EventEmitter<void> = new EventEmitter<void>();
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
   @Output() alert: EventEmitter<string> = new EventEmitter<string>();
@@ -21,6 +21,14 @@ export class ModalBrandComponent {
 
   addBrand() {  
     this.carBrandService.addBrand(this.dataBrand)
+    .subscribe((response:any) => {
+      this.toggleModal()
+      this.inputData.emit()
+    })
+  }
+
+  editBrand() {
+    this.carBrandService.editBrand(this.idBrand, this.dataBrand)
     .subscribe((response:any) => {
       this.toggleModal()
       this.inputData.emit()

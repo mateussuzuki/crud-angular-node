@@ -33,9 +33,5 @@ export class CarService {
   //   return this.http.get(`${this.dbUrl}/color`)
   // }
 
-  getAllCarsBrand() {
-    return this.http.get(`${this.dbUrl}/brand`)
-  }
-
 }
 

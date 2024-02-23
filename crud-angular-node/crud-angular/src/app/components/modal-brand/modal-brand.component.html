@@ -39,9 +39,10 @@
     (click)="addBrand()"
     [disabled]="!dataBrand.brand">{{ action }} Brand</button>
 
-    <!-- <button *ngIf="action == 'Edit'"
+    <button *ngIf="action == 'Edit'"
     class="btn btn-primary"
-    [disabled]="!dataColor.color">edit color</button> -->
+    [disabled]="!dataBrand.brand"
+    (click)="editBrand()">edit color</button>
 
     <button *ngIf="action == 'Delete'"
     class="btn btn-primary"

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from 'src/app/interfaces/cars';
+import { CarBrandService } from 'src/app/services/carBrand.service';
 import { CarService } from 'src/app/services/cars.service';
 
 @Component({
@@ -20,11 +21,13 @@ export class BrandPageComponent implements OnInit {
     this.getCarsBrandList()
   }
 
-  constructor(private carService: CarService) { }
+  constructor(
+    private carBrandService:CarBrandService
+    ) { }
 
 
   getCarsBrandList() {
-    this.carService.getAllCarsBrand()
+    this.carBrandService.getAllCarsBrand()
       .subscribe((response: any) => {
         this.brands = response
       })
@@ -32,6 +35,12 @@ export class BrandPageComponent implements OnInit {
 
   addBrand() {
     this.action = "Add"
+    this.toggleModal()
+  }
+
+  editBrand(id:number) {
+    this.action = "Edit"
+    this.idBrand = id
     this.toggleModal()
   }
  

@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   
   try {
-    const color = await carColorService.editColor(req.query.id, req.body);
+    const color = await carColorService.editColor(req.params.id, req.body);
     res.json(color);
   } catch (error) {
     res.status(500).json({ error: error.message });

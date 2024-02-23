@@ -1,10 +1,10 @@
 const dbData = require('../dbConfig')
 
 async function getAllCarsColor() {
-  const [rows] = await dbData.query(
+  const [colors] = await dbData.query(
     `SELECT * FROM carsColor
     ORDER BY carsColor.id`)
-  return rows
+  return colors
 }
 
 async function addColor(data) {
@@ -28,9 +28,7 @@ async function editColor(id, edit) {
       [edit.color, id]
 
     )
-
     return editColor
-
   } catch (error) {
 
   }

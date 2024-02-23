@@ -58,17 +58,9 @@ async function deleteCar(del) {
   }
 }
 
-async function getAllCarsBrand() {
-  const [rows] = await dbData.query(
-    `SELECT * FROM carsBrand`)
-  return rows
-}
-
 module.exports = {
   getAllCars,
   addCar,
-  deleteCar,
-  getAllCarsBrand,
   editCar,
-  
+  deleteCar  
 };

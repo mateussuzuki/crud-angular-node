@@ -1,6 +1,11 @@
 const dbData = require('../dbConfig')
 
 
+async function getAllCarsBrand() {
+  const [rows] = await dbData.query(
+    `SELECT * FROM carsBrand`)
+  return rows
+}
 
 async function addBrand(data) {
   try {
@@ -21,6 +26,19 @@ async function addBrand(data) {
   }
 }
 
+async function editBrand(id, edit) {
+  try {
+    const carBrand = await dbData.query(
+      `UPDATE carsBrand 
+      SET brand = ? 
+      WHERE id = ?`,
+      [edit.brand, id]
+    )
+  } catch(error) {
+
+  }
+}
+
 async function deleteBrand(del) {
   try {
     const carBrand = await dbData.query(
@@ -38,6 +56,8 @@ async function deleteBrand(del) {
 
 module.exports = {
   addBrand,
-  deleteBrand
+  deleteBrand,
+  getAllCarsBrand,
+  editBrand
   
 };
