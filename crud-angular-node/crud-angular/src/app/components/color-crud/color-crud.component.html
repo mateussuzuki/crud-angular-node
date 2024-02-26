@@ -58,7 +58,7 @@
         <td> {{ color.color }} </td>
         <td>
           <div>
-            <button class="btn btn-primary mx-1" (click)="editCar(color.id)">
+            <button class="btn btn-primary mx-1" (click)="editCar(color.id, color.color)">
               <i class="bi bi-pencil-square"></i>
             </button>
 
@@ -78,7 +78,8 @@
   (inputData)="getCarsColorList()"
   (alert)="alertForDelete($event)"
   [action]="action"
-  [idColor]="idColor"/>
+  [idColor]="idColor"
+  [editedColor]="editedColor"/>
   <div class="backModal" (click)=toggleModal()></div>
 </div>
 

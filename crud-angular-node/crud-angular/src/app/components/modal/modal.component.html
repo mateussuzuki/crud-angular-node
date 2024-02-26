@@ -67,11 +67,13 @@
     
     <button *ngIf="action == 'Add'" 
     class="btn btn-primary" 
-    (click)="addCar()">Add User</button>
+    (click)="addCar()"
+    [disabled]="!dataCar.name || !dataCar.brand || !dataCar.color">Add User</button>
     
     <button *ngIf="action == 'Edit'" 
     class="btn btn-secondary" 
-    (click)="editCar()">update User</button>
+    (click)="editCar()"
+    [disabled]="!dataCar.name">update User</button>
     
     <button *ngIf="action == 'Delete'" 
     class="btn btn-danger" 

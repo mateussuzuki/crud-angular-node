@@ -54,7 +54,7 @@
         <td> {{ brand.brand }} </td>
         <td>
           <div>
-            <button class="btn btn-primary mx-1" (click)="editBrand(brand.id)">
+            <button class="btn btn-primary mx-1" (click)="editBrand(brand.id, brand.brand)">
               <i class="bi bi-pencil-square"></i>
             </button>
 
@@ -75,6 +75,7 @@
   [action]="action"
   (inputData)="getCarsBrandList()"
   [idBrand]="idBrand"
-  (alert)="alertForDelete($event)"/>
+  (alert)="alertForDelete($event)"
+  [editedBrand]="editedBrand"/>
   <div class="backModal" (click)=toggleModal()></div>
 </div>

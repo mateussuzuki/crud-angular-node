@@ -30,7 +30,6 @@ export class ModalComponent implements OnInit{
   @Output() inputData: EventEmitter<void> = new EventEmitter<void>();
   
   ngOnInit(): void {
-    this.getCarsColorList()
     this.getCarsBrandList()
   }
 
@@ -60,17 +59,8 @@ export class ModalComponent implements OnInit{
   deleteCar() {
     this.carService.deleteCar(this.deletedCar)
     .subscribe((response:any) => {
-      
       this.inputData.emit()
       this.toggleModal()
-    })
-  }
-
-  getCarsColorList() {
-    this.carColorService.getAllCarColors()
-    .subscribe((response:any) => {
-      this.colors = response
-      
     })
   }
 

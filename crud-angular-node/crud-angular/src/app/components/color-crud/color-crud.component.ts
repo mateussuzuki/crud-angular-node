@@ -16,6 +16,7 @@ export class ColorCrudComponent implements OnInit{
   action:string = ""
   alert!:string
   idColor!:number
+  editedColor!:string
 
   ngOnInit(): void {
     this.getCarsColorList()
@@ -36,9 +37,10 @@ export class ColorCrudComponent implements OnInit{
     this.toggleModal()
   }
 
-  editCar(id:number) {
+  editCar(id:number, color:string) {
     this.action = "Edit"
     this.idColor = id
+    this.editedColor = color
     this.toggleModal()
   }
 

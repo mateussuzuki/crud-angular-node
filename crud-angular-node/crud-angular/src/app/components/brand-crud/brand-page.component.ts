@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from 'src/app/interfaces/cars';
 import { CarBrandService } from 'src/app/services/carBrand.service';
-import { CarService } from 'src/app/services/cars.service';
 
 @Component({
   selector: 'app-brand-page',
@@ -12,7 +11,7 @@ export class BrandPageComponent implements OnInit {
 
   brands: Car[] = []
   toggle!: boolean
-
+  editedBrand!:string
   action!: string
   idBrand!:number
   alert!:string
@@ -38,9 +37,10 @@ export class BrandPageComponent implements OnInit {
     this.toggleModal()
   }
 
-  editBrand(id:number) {
+  editBrand(id:number, edit:string) {
     this.action = "Edit"
     this.idBrand = id
+    this.editedBrand = edit
     this.toggleModal()
   }
  
@@ -56,8 +56,6 @@ export class BrandPageComponent implements OnInit {
 
   alertForDelete(alert:string) {
     this.alert = alert
-    console.log(this.alert);
-    
   }
 
 

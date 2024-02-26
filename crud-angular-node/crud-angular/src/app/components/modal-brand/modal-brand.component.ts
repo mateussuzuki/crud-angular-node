@@ -10,6 +10,7 @@ export class ModalBrandComponent {
 
   @Input() action!:string
   @Input() idBrand!:any
+  @Input() editedBrand!:string
   @Output() inputData: EventEmitter<void> = new EventEmitter<void>();
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
   @Output() alert: EventEmitter<string> = new EventEmitter<string>();

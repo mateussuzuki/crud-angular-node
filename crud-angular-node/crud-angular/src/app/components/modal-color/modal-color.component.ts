@@ -15,6 +15,7 @@ export class ModalColorComponent{
   
   constructor(private carColorService:CarColorService){}
 
+  @Input() editedColor!:string
   @Input() action!:string
   @Input() idColor!:number
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();

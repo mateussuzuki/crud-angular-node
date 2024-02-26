@@ -21,8 +21,6 @@ export class CarBrandService {
   }
 
   editBrand(id:any, edit:any) {
-    console.log("chegou", id, edit);
-    
     return this.http.put(`${this.dbUrl}/${id}`, edit)
   }
 
