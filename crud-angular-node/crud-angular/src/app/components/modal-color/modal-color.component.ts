@@ -15,9 +15,10 @@ export class ModalColorComponent{
   
   constructor(private carColorService:CarColorService){}
 
-  @Input() editedColor!:string
+  @Input() editedColorPlaceholder!:string
   @Input() action!:string
   @Input() idColor!:number
+  
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
   @Output() inputData: EventEmitter<void> = new EventEmitter<void>();
   @Output() alert: EventEmitter<string> = new EventEmitter<string>();
@@ -25,6 +26,7 @@ export class ModalColorComponent{
   addCarColor() {
     this.carColorService.addCarColor(this.dataColor)
     .subscribe((response:any) => {
+      this.alert.emit("success")
       this.toggleModal()
       this.inputData.emit()
     })
@@ -33,6 +35,7 @@ export class ModalColorComponent{
   editColor() {
     this.carColorService.editCarColor(this.idColor, this.dataColor)
     .subscribe((response:any) => {
+      this.alert.emit("success")
       this.toggleModal()
       this.inputData.emit()
     })

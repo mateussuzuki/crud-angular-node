@@ -10,10 +10,12 @@ export class ModalBrandComponent {
 
   @Input() action!:string
   @Input() idBrand!:any
-  @Input() editedBrand!:string
+  @Input() editedBrandPlaceholder!:string
+
   @Output() inputData: EventEmitter<void> = new EventEmitter<void>();
   @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
   @Output() alert: EventEmitter<string> = new EventEmitter<string>();
+
   constructor(private carBrandService:CarBrandService){}
   
   dataBrand = {
@@ -23,6 +25,7 @@ export class ModalBrandComponent {
   addBrand() {  
     this.carBrandService.addBrand(this.dataBrand)
     .subscribe((response:any) => {
+      this.alert.emit("success")
       this.toggleModal()
       this.inputData.emit()
     })
@@ -31,6 +34,7 @@ export class ModalBrandComponent {
   editBrand() {
     this.carBrandService.editBrand(this.idBrand, this.dataBrand)
     .subscribe((response:any) => {
+      this.alert.emit("success")
       this.toggleModal()
       this.inputData.emit()
     })
@@ -42,7 +46,7 @@ export class ModalBrandComponent {
       this.alert.emit("success")
       this.toggleModal()
       this.inputData.emit()
-    },(error:any) => {
+    }, (error:any) => {
       this.alert.emit("error")
       this.toggleModal()
     })

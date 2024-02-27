@@ -16,7 +16,7 @@ export class ColorCrudComponent implements OnInit{
   action:string = ""
   alert!:string
   idColor!:number
-  editedColor!:string
+  editedColorPlaceholder!:string
 
   ngOnInit(): void {
     this.getCarsColorList()
@@ -34,24 +34,28 @@ export class ColorCrudComponent implements OnInit{
 
   addColor() {
     this.action = "Add"
+    this.editedColorPlaceholder = "color"
     this.toggleModal()
   }
 
   editCar(id:number, color:string) {
     this.action = "Edit"
     this.idColor = id
-    this.editedColor = color
+    this.editedColorPlaceholder = color
     this.toggleModal()
   }
 
   deleteColor(del:any) {
-    this.action = 'Delete'
+    this.action = "Delete"
     this.idColor = del
     this.toggleModal()
   }
 
   alertForDelete(alert:string) {
     this.alert = alert
+    setTimeout(() => {
+      this.alert = ""
+    }, 1500)
   }
 
   toggleModal() {

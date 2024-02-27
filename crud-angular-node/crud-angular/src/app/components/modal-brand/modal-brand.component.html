@@ -21,7 +21,7 @@
         name="color" 
         class="form-control"
         [(ngModel)]="dataBrand.brand" 
-        placeholder=" {{ editedBrand }} "
+        placeholder=" {{ editedBrandPlaceholder }} "
         required>
   
       </div>
@@ -37,16 +37,16 @@
     <button *ngIf="action == 'Add'"
     class="btn btn-primary" 
     (click)="addBrand()"
-    [disabled]="!dataBrand.brand">{{ action }} Brand</button>
+    [disabled]="!dataBrand.brand"> {{ action }} Brand</button>
 
     <button *ngIf="action == 'Edit'"
     class="btn btn-primary"
     [disabled]="!dataBrand.brand"
-    (click)="editBrand()">edit color</button>
+    (click)="editBrand()"> {{ action }} color</button>
 
     <button *ngIf="action == 'Delete'"
     class="btn btn-primary"
-    (click)="deleteBrand()">delete color</button>
+    (click)="deleteBrand()"> {{ action }} color</button>
 
     
 

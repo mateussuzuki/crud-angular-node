@@ -26,10 +26,12 @@ export class ModalComponent implements OnInit{
   @Input() deletedCar!:string
   @Input() editedCar!:string
   
-  @Output() toggle: EventEmitter<void> = new EventEmitter<void>();
-  @Output() inputData: EventEmitter<void> = new EventEmitter<void>();
+  @Output() toggle:EventEmitter<void> = new EventEmitter<void>();
+  @Output() inputData:EventEmitter<void> = new EventEmitter<void>();
+  @Output() alert:EventEmitter<string> = new EventEmitter<string>();
   
   ngOnInit(): void {
+    this.getCarsColorList()
     this.getCarsBrandList()
   }
 
@@ -42,6 +44,7 @@ export class ModalComponent implements OnInit{
   addCar() {
     this.carService.addCar(this.dataCar)
     .subscribe((response:any) => {
+      this.alert.emit("success")
       this.inputData.emit()
       this.toggleModal()
     })
@@ -50,6 +53,7 @@ export class ModalComponent implements OnInit{
   editCar() {
     this.carService.editCar(this.editedCar ,this.dataCar)
     .subscribe((response:any) => {
+      this.alert.emit("success")
       this.inputData.emit()
       this.toggleModal()
     })
@@ -59,6 +63,7 @@ export class ModalComponent implements OnInit{
   deleteCar() {
     this.carService.deleteCar(this.deletedCar)
     .subscribe((response:any) => {
+      this.alert.emit("success")
       this.inputData.emit()
       this.toggleModal()
     })
@@ -68,6 +73,13 @@ export class ModalComponent implements OnInit{
     this.carBrandService.getAllCarsBrand()
     .subscribe((response:any) => {
       this.brands = response
+    })
+  }
+
+  getCarsColorList() {
+    this.carColorService.getAllCarColors()
+    .subscribe((response:any) => {
+      this.colors = response
     })
   }
 

@@ -14,7 +14,7 @@ export class CrudPageComponent {
 
   toggle: boolean = false
   action:string = "add"
-
+  alert!:string
   deletedCar!:any
   editedCar!:any
 
@@ -51,6 +51,14 @@ export class CrudPageComponent {
     
     this.action = "Delete"
     this.toggleModal()
+  }
+
+  
+  alertType(alert:string) {
+    this.alert = alert
+    setTimeout(() => {
+      this.alert = ""
+    }, 1500)
   }
 
 }

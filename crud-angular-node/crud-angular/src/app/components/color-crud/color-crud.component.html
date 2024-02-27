@@ -16,23 +16,25 @@
       <h1>Colors</h1>
     </div>
 
-    <div *ngIf="alert == 'error'" 
-    class="col-6 alert alert-danger alert-dismissible d-flex align-items-center" role="alert">
-      <svg class="bi me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-      <div>
-        <h3>This color is being used on some car</h3>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    </div>
-
     <div *ngIf="alert == 'success'" 
     class="col-6 alert alert-success alert-dismissible d-flex align-items-center" role="alert">
       <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
       <div>
-        <h3> Color deleted successfully </h3>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <h3> Successfully </h3>
+        <h3 *ngIf="action == 'Add'" > Color added </h3>
+        <h3 *ngIf="action == 'Edit'" > Color edited </h3>
+        <h3 *ngIf="action == 'Delete'" > Color deleted </h3>
       </div>
     </div>
+
+    <div *ngIf="alert == 'error'" 
+    class="col-6 alert alert-danger alert-dismissible d-flex align-items-center" role="alert">
+      <svg class="bi me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+      <div>
+        <h3> Error! This color is being used </h3>
+      </div>
+    </div>
+
 
   </div>
   
@@ -79,7 +81,7 @@
   (alert)="alertForDelete($event)"
   [action]="action"
   [idColor]="idColor"
-  [editedColor]="editedColor"/>
+  [editedColorPlaceholder]="editedColorPlaceholder"/>
   <div class="backModal" (click)=toggleModal()></div>
 </div>
 

@@ -14,23 +14,13 @@
     <h2>Color</h2>
     <div class="col-11">
 
-      <div *ngIf="action == 'Add'" class="input-group mb-3">
+      <div *ngIf="action == 'Add' || action == 'Edit'" class="input-group mb-3">
         <input type="text" 
         id="color" 
         name="color" 
         class="form-control"
         [(ngModel)]="dataColor.color" 
-        placeholder="color"
-        required>
-      </div>
-
-      <div *ngIf="action == 'Edit'" class="input-group mb-3">
-        <input type="text" 
-        id="color" 
-        name="color" 
-        class="form-control"
-        [(ngModel)]="dataColor.color" 
-        placeholder=" {{ editedColor }} "
+        placeholder=" {{ editedColorPlaceholder }} "
         required>
       </div>
     </div>

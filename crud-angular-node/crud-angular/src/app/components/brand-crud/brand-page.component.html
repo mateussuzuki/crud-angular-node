@@ -13,23 +13,26 @@
       <h1>Brand</h1>
     </div>
 
-    <div *ngIf="alert == 'error'" 
-    class="col-6 alert alert-danger alert-dismissible d-flex align-items-center" role="alert">
-      <svg class="bi me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-      <div>
-        <h3>This Brand is being used on some car</h3>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    </div>
-
     <div *ngIf="alert == 'success'" 
     class="col-6 alert alert-success alert-dismissible d-flex align-items-center" role="alert">
       <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
       <div>
-        <h3> Brand deleted successfully </h3>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <h3> Successfully! </h3>
+        <h3 *ngIf="action == 'Add'"> Brand added </h3>
+        <h3 *ngIf="action == 'Edit'"> Brand edited </h3>
+        <h3 *ngIf="action == 'Delete'"> Brand deleted </h3>
       </div>
     </div>
+
+    <div *ngIf="alert == 'error'" 
+    class="col-6 alert alert-danger alert-dismissible d-flex align-items-center" role="alert">
+      <svg class="bi me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+      <div>
+        <h3> Error! This brand is being used </h3>
+
+      </div>
+    </div>
+
 
   </div>
 
@@ -76,6 +79,6 @@
   (inputData)="getCarsBrandList()"
   [idBrand]="idBrand"
   (alert)="alertForDelete($event)"
-  [editedBrand]="editedBrand"/>
+  [editedBrandPlaceholder]="editedBrandPlaceholder"/>
   <div class="backModal" (click)=toggleModal()></div>
 </div>

@@ -11,10 +11,11 @@ export class BrandPageComponent implements OnInit {
 
   brands: Car[] = []
   toggle!: boolean
-  editedBrand!:string
+  editedBrandPlaceholder!:string
   action!: string
   idBrand!:number
   alert!:string
+  typeAlert!:string
 
   ngOnInit(): void {
     this.getCarsBrandList()
@@ -34,13 +35,14 @@ export class BrandPageComponent implements OnInit {
 
   addBrand() {
     this.action = "Add"
+    this.editedBrandPlaceholder = "brand"
     this.toggleModal()
   }
 
   editBrand(id:number, edit:string) {
     this.action = "Edit"
     this.idBrand = id
-    this.editedBrand = edit
+    this.editedBrandPlaceholder = edit
     this.toggleModal()
   }
  
@@ -56,6 +58,9 @@ export class BrandPageComponent implements OnInit {
 
   alertForDelete(alert:string) {
     this.alert = alert
+    setTimeout(() => {
+      this.alert = ""
+    }, 1000)
   }
 
 
