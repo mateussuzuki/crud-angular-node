@@ -17,6 +17,8 @@ export class CrudPageComponent {
   alert!:string
   deletedCar!:any
   editedCar!:any
+  currentPag:number = 1
+  totalPags!:number
 
   constructor(private carService:CarService) { }
 
@@ -28,10 +30,13 @@ export class CrudPageComponent {
     this.toggle = !this.toggle
   }
 
-  getCarsList() {
-    this.carService.getAllCars()
+  getCarsList(currentPag:number = 1) {
+    const pagSize = 10
+    this.currentPag = currentPag
+    this.carService.getAllCars(this.currentPag, pagSize)
     .subscribe((response:any) => {
-      this.cars = response
+      this.cars = response.data
+      this.totalPags = Math.ceil(response.amount / pagSize)      
     })
   }
 

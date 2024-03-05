@@ -11,8 +11,8 @@ export class CarService {
 
   constructor(private http: HttpClient){}
 
-  getAllCars() {
-    return this.http.get(`${this.dbUrl}`)
+  getAllCars(page:number, pageSize:number) {
+    return this.http.get(`${this.dbUrl}/getPagination?pag=${page}&pagSize=${pageSize}`)
   }
 
   addCar(data:any) {
@@ -29,9 +29,6 @@ export class CarService {
     return this.http.delete(`${this.dbUrl}`, { params })
   }
 
-  // getAllCarColors() {
-  //   return this.http.get(`${this.dbUrl}/color`)
-  // }
 
 }
 

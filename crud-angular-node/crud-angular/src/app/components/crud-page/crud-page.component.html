@@ -42,7 +42,7 @@
 
     <tbody>
       <tr *ngFor="let car of cars; let i = index">
-        <td>{{ i + 1 }}</td>
+        <td>{{ car.id }}</td>
         <td>{{ car.name }}</td>
         <td>{{ car.brand }}</td>
         <td>{{ car.color }}</td>
@@ -63,6 +63,11 @@
     </tbody>
   </table>
 </div>
+
+<app-button-pagination 
+[totalPags]="totalPags"
+[currentPag]="currentPag"
+(changePag)="getCarsList($event)"/>
 
 <div *ngIf="toggle">
   <app-modal 

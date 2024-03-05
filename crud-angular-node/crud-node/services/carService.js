@@ -11,6 +11,36 @@ async function getAllCars() {
   return rows
 }
 
+async function getAllCarsPagination(pag = 1, pagSize = 10) {
+
+  const offset = (pag * pagSize) - pagSize
+
+  const [rows] = await dbData.query(
+    `SELECT carsModel.id, carsModel.name, carsBrand.brand, carsColor.color 
+    FROM carsModel
+    INNER JOIN carsBrand 
+    ON carsModel.idBrand = carsBrand.id
+    INNER JOIN carsColor
+    ON carsModel.idColor = carsColor.id
+    ORDER BY carsModel.id
+    LIMIT ${pagSize} 
+    OFFSET ${offset}`);
+  return rows
+
+}
+
+async function getAllCarsAmount() {
+  try {
+    const [rows] = await dbData.query(
+      `SELECT COUNT(1) as amount
+       FROM carsModel`
+      )
+      return rows[0].amount
+  } catch(error) {
+    throw Error(error)
+  }
+}
+
 async function addCar(data) {
   try {
 
@@ -62,5 +92,7 @@ module.exports = {
   getAllCars,
   addCar,
   editCar,
-  deleteCar  
+  deleteCar,
+  getAllCarsPagination,
+  getAllCarsAmount
 };

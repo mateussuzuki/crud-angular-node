@@ -13,6 +13,7 @@ import { ColorCrudComponent } from './components/color-crud/color-crud.component
 import { BrandPageComponent } from './components/brand-crud/brand-page.component';
 import { ModalColorComponent } from './components/modal-color/modal-color.component';
 import { ModalBrandComponent } from './components/modal-brand/modal-brand.component';
+import { ButtonPaginationComponent } from './components/button-pagination/button-pagination.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ModalBrandComponent } from './components/modal-brand/modal-brand.compon
     BrandPageComponent,
     ModalColorComponent,
     ModalBrandComponent,
+    ButtonPaginationComponent,
   ],
   imports: [
     BrowserModule,

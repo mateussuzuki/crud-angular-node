@@ -3,13 +3,31 @@ const router = express.Router();
 const carService = require('../services/carService');
 
 router.get('/', async (req, res) => {
-  
   try {
     const cars = await carService.getAllCars();
     res.json(cars);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+});
+
+router.get('/getPagination', async (req, res) => {
+
+  const pag = req.query.pag || 1
+  const pagSize = req.query.pagSize || 10
+
+  try {
+    const cars = await carService.getAllCarsPagination(pag, pagSize);
+    const amount = await carService.getAllCarsAmount();
+    res.json({
+      data: cars,
+      amount: amount
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+
+  return 
 });
 
 
