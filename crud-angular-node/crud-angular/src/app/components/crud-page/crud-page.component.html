@@ -25,14 +25,25 @@
     </div>
 
   <hr>
-  <table class="table">
+  <table class="table table-striped">
     <thead>
       <tr>
-        <th>id</th>
-        <th>Name</th>
-        <th>Brand</th>
-        <th>Color</th>
+        <th>#
+          <i (click)="changeOrderBy('carsModel.id'); toggleOrderByClass(0)" 
+          [ngClass]="orderByClass[0]">
+        </i> 
+          </th>
+        <th>Name 
+          <i (click)="changeOrderBy('carsModel.name'); toggleOrderByClass(1)" 
+          [ngClass]="orderByClass[1]"></i> </th>
+        <th>Brand 
+          <i (click)="changeOrderBy('carsBrand.brand'); toggleOrderByClass(2)" 
+          [ngClass]="orderByClass[2]"></i> </th>
+        <th>Color 
+          <i (click)="changeOrderBy('carsColor.color'); toggleOrderByClass(3)"
+          [ngClass]="orderByClass[3]"></i> </th>
         <th>
+          <!-- <i class="bi bi-caret-up-fill"></i> UP -->
           <button class="btn btn-primary mx-1" (click)="addCar()">
             <i class="bi bi-plus"></i>
           </button>

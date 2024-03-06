@@ -11,9 +11,14 @@ async function getAllCars() {
   return rows
 }
 
-async function getAllCarsPagination(pag = 1, pagSize = 10) {
+async function getAllCarsPagination({
+  pag = 1, 
+  pagSize = 10, 
+  orderBy = 'id', 
+  typeOrder = 'asc'}) {
 
   const offset = (pag * pagSize) - pagSize
+
 
   const [rows] = await dbData.query(
     `SELECT carsModel.id, carsModel.name, carsBrand.brand, carsColor.color 
@@ -22,9 +27,10 @@ async function getAllCarsPagination(pag = 1, pagSize = 10) {
     ON carsModel.idBrand = carsBrand.id
     INNER JOIN carsColor
     ON carsModel.idColor = carsColor.id
-    ORDER BY carsModel.id
+    ORDER BY ${orderBy} ${typeOrder}
     LIMIT ${pagSize} 
-    OFFSET ${offset}`);
+    OFFSET ${offset}`
+    );
   return rows
 
 }

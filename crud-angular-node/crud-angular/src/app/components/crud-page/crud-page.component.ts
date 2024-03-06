@@ -12,13 +12,21 @@ export class CrudPageComponent {
 
   cars: Car[] = []
 
-  toggle: boolean = false
+  orderByClass:string[] = [
+    "bi bi-caret-down-fill", 
+    "bi bi-caret-down", 
+    "bi bi-caret-down", 
+    "bi bi-caret-down"
+  ];
+
+  toggle:boolean = false
   action:string = "add"
   alert!:string
   deletedCar!:any
   editedCar!:any
   currentPag:number = 1
   totalPags!:number
+  orderBy:string = 'id'
 
   constructor(private carService:CarService) { }
 
@@ -33,7 +41,7 @@ export class CrudPageComponent {
   getCarsList(currentPag:number = 1) {
     const pagSize = 10
     this.currentPag = currentPag
-    this.carService.getAllCars(this.currentPag, pagSize)
+    this.carService.getAllCars(this.currentPag, pagSize, this.orderBy)
     .subscribe((response:any) => {
       this.cars = response.data
       this.totalPags = Math.ceil(response.amount / pagSize)      
@@ -58,12 +66,21 @@ export class CrudPageComponent {
     this.toggleModal()
   }
 
-  
   alertType(alert:string) {
     this.alert = alert
     setTimeout(() => {
       this.alert = ""
     }, 1500)
+  }
+
+  changeOrderBy(type:string) {
+    this.orderBy = type
+    this.getCarsList()
+  }
+
+  toggleOrderByClass(by: number): void {
+    this.orderByClass = this.orderByClass.map(() => "bi bi-caret-down")
+    this.orderByClass[by] = 'bi bi-caret-down-fill'
   }
 
 }

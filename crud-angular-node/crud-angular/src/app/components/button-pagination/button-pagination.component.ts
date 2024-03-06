@@ -18,13 +18,11 @@ export class ButtonPaginationComponent {
     let pags:any[] = []
 
     for(let a = 1; a <= totalPags; a++) {
-
       pags.push({
         numberPage: a,
         selected: a == this.currentPag
       })
     } 
-    
     return pags
   }
 

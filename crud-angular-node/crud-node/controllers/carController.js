@@ -13,11 +13,15 @@ router.get('/', async (req, res) => {
 
 router.get('/getPagination', async (req, res) => {
 
-  const pag = req.query.pag || 1
-  const pagSize = req.query.pagSize || 10
+  const pageData = {
+    pag: req.query.pag || 1,
+    pagSize: req.query.pagSize || 10,
+    orderBy: req.query.orderBy || 'id',
+    typeOrder: req.query.typeOrder || "" 
+  }
 
   try {
-    const cars = await carService.getAllCarsPagination(pag, pagSize);
+    const cars = await carService.getAllCarsPagination(pageData);
     const amount = await carService.getAllCarsAmount();
     res.json({
       data: cars,
