@@ -11,8 +11,8 @@ export class CarService {
 
   constructor(private http: HttpClient){}
 
-  getAllCars(page:number, pageSize:number, orderBy:string) {
-    return this.http.get(`${this.dbUrl}/getPagination?pag=${page}&pagSize=${pageSize}&orderBy=${orderBy}`)
+  getAllCars(page:number, pageSize:number, orderBy:string, typeOrder:string) {
+    return this.http.get(`${this.dbUrl}/getPagination?pag=${page}&pagSize=${pageSize}&orderBy=${orderBy}&typeOrder=${typeOrder}`)
   }
 
   addCar(data:any) {

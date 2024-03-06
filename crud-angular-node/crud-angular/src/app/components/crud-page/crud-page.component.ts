@@ -27,6 +27,8 @@ export class CrudPageComponent {
   currentPag:number = 1
   totalPags!:number
   orderBy:string = 'id'
+  typeOrder:string = ""
+
 
   constructor(private carService:CarService) { }
 
@@ -41,7 +43,7 @@ export class CrudPageComponent {
   getCarsList(currentPag:number = 1) {
     const pagSize = 10
     this.currentPag = currentPag
-    this.carService.getAllCars(this.currentPag, pagSize, this.orderBy)
+    this.carService.getAllCars(this.currentPag, pagSize, this.orderBy, this.typeOrder)
     .subscribe((response:any) => {
       this.cars = response.data
       this.totalPags = Math.ceil(response.amount / pagSize)      
@@ -79,8 +81,16 @@ export class CrudPageComponent {
   }
 
   toggleOrderByClass(by: number): void {
-    this.orderByClass = this.orderByClass.map(() => "bi bi-caret-down")
-    this.orderByClass[by] = 'bi bi-caret-down-fill'
+    if(this.orderByClass[by] == 'bi bi-caret-down-fill') {
+      this.orderByClass[by] = 'bi bi-caret-up-fill'
+      this.typeOrder = 'desc'
+    } else {
+      this.orderByClass = this.orderByClass.map(() => "bi bi-caret-down")
+      this.orderByClass[by] = 'bi bi-caret-down-fill'
+      this.typeOrder = ''
+    }
+    this.getCarsList()
+
   }
 
 }
